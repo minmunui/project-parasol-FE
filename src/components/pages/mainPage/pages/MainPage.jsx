@@ -2,13 +2,13 @@ import StockGrid from "../organisms/StockGrid";
 
 const stocks = [
   {
-    name: "삼성전자 성전자 성전자 성전자 성전자 성전자",
+    name: "삼성전자  성전자",
     stockCode: "005930",
     price: 80000,
     change: 1000,
     recommend: {
-      buy: 0.73,
-      sell: 0.27,
+      buy: 0.99,
+      sell: 0.01,
     },
   },
   {

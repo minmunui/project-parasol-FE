@@ -10,6 +10,7 @@ import { getChangePercentage } from "../../../../utils/calculate";
 import { FormatContext } from "../../../../App";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import RecommendBar from "../../../commons/atoms/RecommendBar";
 
 const StockCard = ({ stock }) => {
   const { name, stockCode, price, change, recommend } = stock;
@@ -31,7 +32,7 @@ const StockCard = ({ stock }) => {
           {stockCode}
         </div>
       </div>
-      <div className="stock-info-row flex flex-row justify-between">
+      <div className="stock-info-row flex flex-row justify-between mb-2">
         <div className="stock-card-price flex font-semibold">
           {comma(price)}
           <span className={"flex items-end text-sm"}>KRW</span>
@@ -49,6 +50,7 @@ const StockCard = ({ stock }) => {
         </div>
         <RecommendBadge recommend={getRecommend(recommend)} />
       </div>
+      <RecommendBar recommend={recommend} />
     </div>
   );
 };
