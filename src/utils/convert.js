@@ -9,18 +9,20 @@ export const comma = (num) => {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 
+export const codeToNumber = (code) => {
+  return parseInt(code);
+};
+
 export const getChangeColor = (change) => {
-  if (change === undefined || change === 0)
-    return "text-gray-500";
+  if (change === undefined || change === 0) return "text-gray-500";
   else {
     return change > 0 ? "text-red-500" : "text-blue-500";
   }
-}
+};
 
 export const getChangeSymbol = (change) => {
-    if (change === undefined || change === 0)
-        return "―";
-    else {
-        return change > 0 ? "▲" : "▼";
-    }
-}
+  if (change === undefined || change === 0) return "―";
+  else {
+    return change > 0 ? "▲" : "▼";
+  }
+};
