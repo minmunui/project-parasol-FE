@@ -9,3 +9,8 @@ export const getRecommendColor = (isRecommend) => {
 export const getRecommendText = (isRecommend) => {
     return isRecommend? "매수": "매도"
 }
+
+export const getRecommend = (recommend) => {
+    const {buy, sell} = recommend;
+    return buy > sell;
+}

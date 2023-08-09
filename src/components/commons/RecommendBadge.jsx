@@ -1,4 +1,4 @@
-import { getRecommendColor } from "../../utils/recommends";
+import { getRecommendColor, getRecommendText } from "../../utils/recommends";
 
 const RecommendBadge = ({ recommend }) => {
   return (
@@ -8,7 +8,7 @@ const RecommendBadge = ({ recommend }) => {
         getRecommendColor(recommend)
       }
     >
-      {recommend ? "매수" : "매도"}
+      {getRecommendText(recommend)}
     </span>
   );
 };
