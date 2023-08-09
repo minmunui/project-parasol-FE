@@ -5,7 +5,7 @@ import MainLayout from "./components/layouts/MainLayout";
 
 function App() {
   return (
-    <div className="App">
+    <div className={"App relative min-h-screen"}>
       <BrowserRouter>
         <Routes>
           <Route element={<MainLayout />}>

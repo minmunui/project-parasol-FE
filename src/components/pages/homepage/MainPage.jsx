@@ -1,7 +1,7 @@
 const MainPage = () => {
     return (
         <div>
-            <h1>Main Page</h1>
+            <h1 className={"h-screen"}>Main Page</h1>
         </div>
     )
 }
