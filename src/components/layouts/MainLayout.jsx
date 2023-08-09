@@ -1,15 +1,16 @@
 import GlobalNavBar from "./GlobalNavBar";
-import {Outlet} from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Footer from "./Footer";
 
-const MainLayout = () => {
-    return (
-        <>
-        <GlobalNavBar />
-        <Outlet />
-        <Footer />
-        </>
-    );
-}
 
-export default MainLayout
+const MainLayout = () => {
+  return (
+    <>
+      <GlobalNavBar />
+      <Outlet />
+      <Footer />
+    </>
+  );
+};
+
+export default MainLayout;
