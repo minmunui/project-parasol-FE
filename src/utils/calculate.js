@@ -4,6 +4,5 @@
  * @param {number} change
  */
 export const getChangePercentage = (price, change) => {
-    console.log("price", price, "change", change)
     return (change / (price - change) * 100).toFixed(2);
 }
