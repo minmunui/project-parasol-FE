@@ -6,8 +6,8 @@ const stockSample = {
   price: 80000,
   change: 1000,
   recommend: {
+    date: "2021-07-12",
     buy: 0.73,
-    sell: 0.27,
   },
   news: [
     {
@@ -55,27 +55,22 @@ const stockSample = {
     {
       date: "2021-07-08",
       buy: 0.73,
-      sell: 0.27,
     },
     {
       date: "2021-07-09",
       buy: 0.73,
-      sell: 0.27,
     },
     {
       date: "2021-07-10",
       buy: 0.73,
-      sell: 0.27,
     },
     {
       date: "2021-07-11",
       buy: 0.73,
-      sell: 0.27,
     },
     {
       date: "2021-07-12",
       buy: 0.73,
-      sell: 0.27,
     },
   ],
 };
@@ -104,7 +99,9 @@ const StockDetailPage = ({ stock = stockSample }) => {
         }
       >
         {name}
-        <span className={"stock-code font-semibold text-gray-500 text-2xl"}>({stockCode})</span>
+        <span className={"stock-code text-2xl font-semibold text-gray-500"}>
+          ({stockCode})
+        </span>
       </h1>
       <div className={"stock-price-graph min-w-[380px] bg-gray-400"}>Graph</div>
       {id}

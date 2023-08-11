@@ -1,20 +1,23 @@
 const RecommendBar = ({ recommend }) => {
-  const { buy, sell } = recommend;
+  const buy = recommend;
+  const sell = (100 - recommend).toFixed(0);
   return (
-    <div className="recommend-bar flex flex-row justify-between h-4">
+    <div className="recommend-bar flex h-4 flex-row justify-between">
       <div
-        className={"recommend-bar-buy flex flex-col items-center bg-red-500 text-sm text-white font-bold justify-center rounded-l-lg"}
-        style={{ width: buy * 100 + "%" }}
+        className={
+          "recommend-bar-buy flex flex-col items-center justify-center rounded-l-lg bg-red-500 text-sm font-bold text-white"
+        }
+        style={{ width: buy + "%" }}
       >
-          <span className={"recommend-bar-buy-text"}>
-        {buy * 100 + "%"}
-          </span>
+        <span className={"recommend-bar-buy-text"}>{buy + "%"}</span>
       </div>
       <div
-        className={"recommend-bar-sell flex flex-col items-center bg-blue-500 text-sm text-white font-bold justify-center rounded-r-lg"}
-        style={{ width: sell * 100 + "%" }}
+        className={
+          "recommend-bar-sell flex flex-col items-center justify-center rounded-r-lg bg-blue-500 text-sm font-bold text-white"
+        }
+        style={{ width: sell + "%" }}
       >
-        {sell * 100 + "%"}
+        {sell + "%"}
       </div>
     </div>
   );

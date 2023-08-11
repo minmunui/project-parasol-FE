@@ -7,8 +7,8 @@ const stocks = [
     price: 80000,
     change: 1000,
     recommend: {
-      buy: 0.99,
-      sell: 0.01,
+      buy: 45,
+      date: "2021-07-12",
     },
   },
   {
@@ -17,8 +17,8 @@ const stocks = [
     price: 80000,
     change: 1000,
     recommend: {
-      buy: 0.73,
-      sell: 0.27,
+      buy: 80,
+      date: "2021-07-12",
     },
   },
   {
@@ -27,15 +27,17 @@ const stocks = [
     price: 80000,
     change: 1000,
     recommend: {
-      buy: 0.73,
-      sell: 0.27,
+      buy: 73,
+      date: "2021-07-12",
     },
   },
 ];
 
 const MainPage = () => {
   return (
-    <div className={"main-page max-w-[1024px] w-full flex flex-col items-center"}>
+    <div
+      className={"main-page flex w-full max-w-[1024px] flex-col items-center"}
+    >
       <header className={"w-full font-bold"}>Main Page</header>
       <StockGrid stocks={stocks} />
     </div>

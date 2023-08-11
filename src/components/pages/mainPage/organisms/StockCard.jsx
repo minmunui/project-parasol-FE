@@ -48,9 +48,9 @@ const StockCard = ({ stock }) => {
               : comma(change)}
           </div>
         </div>
-        <RecommendBadge recommend={getRecommend(recommend)} />
+        <RecommendBadge recommend={getRecommend(recommend.buy)} />
       </div>
-      <RecommendBar recommend={recommend} />
+      <RecommendBar recommend={recommend.buy} />
     </div>
   );
 };

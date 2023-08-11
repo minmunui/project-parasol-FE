@@ -11,6 +11,5 @@ export const getRecommendText = (isRecommend) => {
 }
 
 export const getRecommend = (recommend) => {
-    const {buy, sell} = recommend;
-    return buy > sell;
+    return recommend > 50;
 }
