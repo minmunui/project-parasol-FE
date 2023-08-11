@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 
-const stock = {
+const stockSample = {
   name: "삼성전자",
   stockCode: "005930",
   price: 80000,
@@ -80,12 +80,33 @@ const stock = {
   ],
 };
 
-const StockDetailPage = () => {
+const StockDetailPage = ({ stock = stockSample }) => {
   const id = useParams().id;
 
+  const {
+    stockCode,
+    name,
+    price,
+    change,
+    recommend,
+    news,
+    currentPrice,
+    currentRecommend,
+  } = stock;
+
   return (
-    <div className={"stock-detail-page w-full flex flex-col"}>
-      <div className={"stock-price-graph bg-gray-400 min-w-[380px]"}>Graph</div>
+    <div
+      className={"stock-detail-page page flex w-full max-w-[1024px] flex-col"}
+    >
+      <h1
+        className={
+          "stock-name flex h-20 items-center justify-center text-4xl font-extrabold"
+        }
+      >
+        {name}
+        <span className={"stock-code font-semibold text-gray-500 text-2xl"}>({stockCode})</span>
+      </h1>
+      <div className={"stock-price-graph min-w-[380px] bg-gray-400"}>Graph</div>
       {id}
     </div>
   );
