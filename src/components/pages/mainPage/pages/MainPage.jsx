@@ -1,4 +1,4 @@
-import StockGrid from "../organisms/StockGrid";
+import StockGrid from "../molecules/StockGrid";
 
 const stocks = [
   {
@@ -35,8 +35,8 @@ const stocks = [
 
 const MainPage = () => {
   return (
-    <div className={"main-page flex flex-col items-center"}>
-      <header className={"max-w-[1296px] w-full font-bold"}>Main Page</header>
+    <div className={"main-page max-w-[1024px] w-full flex flex-col items-center"}>
+      <header className={"w-full font-bold"}>Main Page</header>
       <StockGrid stocks={stocks} />
     </div>
   );

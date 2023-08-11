@@ -19,7 +19,7 @@ const StockCard = ({ stock }) => {
   const navigate = useNavigate();
   return (
     <div
-      className="stock-card w-full transform cursor-pointer rounded-xl border-2 border-gray-300 px-4 py-2 transition-all ease-in-out hover:scale-[102%]"
+      className="stock-card w-full min-w-[250px] transform cursor-pointer rounded-xl border-2 border-gray-300 px-4 py-2 transition-all ease-in-out hover:scale-[102%]"
       onClick={() => {
         navigate(`/stock/${codeToNumber(stock.stockCode)}`);
       }}
