@@ -14,14 +14,16 @@ function App() {
   return (
     <div className={"App relative min-h-screen w-full"}>
       <FormatContext.Provider value={{ isPercent, setIsPercent }}>
-        <BrowserRouter>
-          <Routes>
-            <Route element={<MainLayout />}>
-              <Route path="/" element={<MainPage />} />
-              <Route path="/stock/:id" element={<StockDetailPage />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
+        <QueryClientProvider client={queryClient}>
+          <BrowserRouter>
+            <Routes>
+              <Route element={<MainLayout />}>
+                <Route path="/" element={<MainPage />} />
+                <Route path="/stock/:id" element={<StockDetailPage />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </QueryClientProvider>
       </FormatContext.Provider>
     </div>
   );
