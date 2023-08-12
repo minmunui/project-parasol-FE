@@ -1,0 +1,310 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "project-parasol API for FE",
+    "description": "프론트앤드에서 요구하는 API Specification입니다.",
+    "contact": {
+      "email": "ehdwls1638@pusan.ac.kr"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://virtserver.swaggerhub.com/minmunui/project-parasol/1.0.0",
+      "description": "SwaggerHub API Auto Mocking"
+    }
+  ],
+  "tags": [
+    {
+      "name": "admins",
+      "description": "Secured Admin-only calls"
+    },
+    {
+      "name": "developers",
+      "description": "Operations available to regular developers"
+    }
+  ],
+  "paths": {
+    "/stock/{stockCode}": {
+      "get": {
+        "summary": "특정 종목에 대한 데이터를 가져옵니다.",
+        "description": "특정 종목에 대한 요약된 데이터를 가져옵니다. 해당 데이터는 메인 페이지의 카드를 구성하는데 사용합니다.\n",
+        "operationId": "getStockData",
+        "parameters": [
+          {
+            "name": "stockCode",
+            "in": "path",
+            "description": "가져올 종목의 코드",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "search results matching criteria",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/recommend/{stockCode}/{page}": {
+      "get": {
+        "summary": "해당 종목에 대한 추천도들을 반환합니다.",
+        "description": "1 페이지를 기준으로 하여 한 페이지당 최신 10 거래일의 추천도를 가져옵니다.\n예를 들어 42거래일 기준으로 1번 페이지는 33~42거래일의 추천도를 2번 페이지는 23~32거래일의 페이지를 가저옵니다.\n",
+        "operationId": "getStockRecommend",
+        "parameters": [
+          {
+            "name": "stockCode",
+            "in": "path",
+            "description": "가져올 종목의 코드",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "page",
+            "in": "path",
+            "description": "추천도 페이지",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "해당 종목의 추천도를 페이지네이션하여 반환합니다. 한 페이지는 10거래일입니다.\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "maxLength": 10,
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Recommend"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/prices/{stockCode}/{page}": {
+      "get": {
+        "summary": "해당 종목의 가격들을 반환합니다.",
+        "description": "1 페이지를 기준으로 하여 한 페이지당 최신 20거래일의 추천도를 가져옵니다.\n",
+        "operationId": "getStockPrice",
+        "parameters": [
+          {
+            "name": "stockCode",
+            "in": "path",
+            "description": "가격을 가져올 종목의 코드",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "page",
+            "in": "path",
+            "description": "가격 페이지",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "해당 종목의 가격을 페이지네이션하여 반환합니다. 한 페이지는 20거래일입니다.\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "maxLength": 20,
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Price"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/news/{stockCode}/{page}": {
+      "get": {
+        "summary": "해당 종목의 기사들을 가져옵니다.",
+        "description": "페이지네이션된 기사들을 가져옵니다. \n",
+        "operationId": "getStockNews",
+        "parameters": [
+          {
+            "name": "stockCode",
+            "in": "path",
+            "description": "기사를 가져올 코드",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "page",
+            "in": "path",
+            "description": "기사 페이지",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "해당 종목의 기사들을 페이지네이션하여 반환합니다. 한 페이지는 6개의 기사입니다.\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "maxLength": 6,
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/News"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Price": {
+        "required": [
+          "date",
+          "price"
+        ],
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date",
+            "example": "2023-08-11"
+          },
+          "price": {
+            "minimum": 0,
+            "type": "integer",
+            "example": 4500
+          }
+        }
+      },
+      "Recommend": {
+        "required": [
+          "buy",
+          "date"
+        ],
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date",
+            "example": "2023-08-11"
+          },
+          "buy": {
+            "maximum": 100,
+            "minimum": 0,
+            "type": "integer",
+            "example": 70
+          }
+        }
+      },
+      "News": {
+        "required": [
+          "date",
+          "id",
+          "source",
+          "summary",
+          "title",
+          "url"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1"
+          },
+          "title": {
+            "type": "string",
+            "example": "삼성 갤럭시Z5 공식 출시…\"年 1000만대 팔릴 것\"\n"
+          },
+          "summary": {
+            "type": "string",
+            "example": "삼성전자는 11일 갤럭시 Z플립·폴드5, 갤럭시 워치6 시리즈, 갤럭시 탭 S9 시리즈를 세계 각국에 공식 출시했다. 출시 국가는 한국을 포함해 미국 영국 프랑스 독일 싱가포르 중국 등 50여 개국이다. 다음달까지 글로벌 출시를 완료할 예정이다.\n"
+          },
+          "date": {
+            "type": "string",
+            "format": "date",
+            "example": "2023-08-11"
+          },
+          "url": {
+            "type": "string",
+            "format": "url",
+            "example": "https://www.hankyung.com/economy/article/2023081154411"
+          }
+        }
+      },
+      "inline_response_200": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "삼성전자"
+          },
+          "stockCode": {
+            "type": "integer",
+            "example": 5930
+          },
+          "price": {
+            "$ref": "#/components/schemas/Price"
+          },
+          "change": {
+            "type": "integer",
+            "example": 1000
+          },
+          "recentRecommend": {
+            "$ref": "#/components/schemas/Recommend"
+          }
+        }
+      }
+    }
+  }
+}
