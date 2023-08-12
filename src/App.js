@@ -5,8 +5,10 @@ import MainPage from "./components/pages/mainPage/pages/MainPage";
 import MainLayout from "./components/layouts/MainLayout";
 import useFormat from "./hooks/useFormat";
 import StockDetailPage from "./components/pages/stockDetailPage/pages/StockDetailPage";
+import {QueryClient, QueryClientProvider} from "react-query";
 
 export const FormatContext = createContext(null);
+const queryClient = new QueryClient();
 
 function App() {
   const { isPercent, setIsPercent } = useFormat(true);
