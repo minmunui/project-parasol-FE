@@ -1,4 +1,7 @@
 import StockGrid from "../molecules/StockGrid";
+import { getStocks } from "../../../../services/stocks";
+import { useQuery } from "react-query";
+import {Suspense, useEffect} from "react";
 
 const stocks = [
   {
@@ -34,12 +37,17 @@ const stocks = [
 ];
 
 const MainPage = () => {
+  const { data, isLoading } = useQuery("stocks", getStocks);
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
   return (
     <div
       className={"main-page flex w-full max-w-[1024px] flex-col items-center"}
     >
-      <header className={"w-full font-bold"}>Main Page</header>
-      <StockGrid stocks={stocks} />
+      <Suspense fallback={<div>loading...</div>}>
+        {data && <StockGrid stocks={data} />}
+      </Suspense>
     </div>
   );
 };
