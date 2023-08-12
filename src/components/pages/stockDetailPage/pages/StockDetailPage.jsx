@@ -54,23 +54,23 @@ const stockSample = {
   currentRecommend: [
     {
       date: "2021-07-08",
-      buy: 0.73,
+      buy: 73
     },
     {
       date: "2021-07-09",
-      buy: 0.73,
+      buy: 80
     },
     {
       date: "2021-07-10",
-      buy: 0.73,
+      buy: 56
     },
     {
       date: "2021-07-11",
-      buy: 0.73,
+      buy: 30
     },
     {
       date: "2021-07-12",
-      buy: 0.73,
+      buy: 40
     },
   ],
 };

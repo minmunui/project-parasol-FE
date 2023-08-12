@@ -13,7 +13,8 @@ import { useNavigate } from "react-router-dom";
 import RecommendBar from "../../../commons/atoms/RecommendBar";
 
 const StockCard = ({ stock }) => {
-  const { name, stockCode, price, change, recommend } = stock;
+  const { name, stockCode, price, recentRecommend } = stock;
+  const { value, change } = price;
   const { isPercent } = useContext(FormatContext);
 
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const StockCard = ({ stock }) => {
     <div
       className="stock-card w-full min-w-[250px] transform cursor-pointer rounded-xl border-2 border-gray-300 px-4 py-2 transition-all ease-in-out hover:scale-[102%]"
       onClick={() => {
-        navigate(`/stock/${codeToNumber(stock.stockCode)}`);
+        navigate(`/stock/${stockCode}`);
       }}
     >
       <div className="stock-name-row flex items-center justify-between">
@@ -32,9 +33,9 @@ const StockCard = ({ stock }) => {
           {stockCode}
         </div>
       </div>
-      <div className="stock-info-row flex flex-row justify-between mb-2">
+      <div className="stock-info-row mb-2 flex flex-row justify-between">
         <div className="stock-card-price flex font-semibold">
-          {comma(price)}
+          {comma(value)}
           <span className={"flex items-end text-sm"}>KRW</span>
           <div
             className={
@@ -44,13 +45,13 @@ const StockCard = ({ stock }) => {
           >
             {getChangeSymbol(change)}
             {isPercent
-              ? getChangePercentage(price, change) + "%"
+              ? getChangePercentage(value, change) + "%"
               : comma(change)}
           </div>
         </div>
-        <RecommendBadge recommend={getRecommend(recommend.buy)} />
+        <RecommendBadge recommend={getRecommend(recentRecommend.buy)} />
       </div>
-      <RecommendBar recommend={recommend.buy} />
+      <RecommendBar recommend={recentRecommend.buy} />
     </div>
   );
 };
