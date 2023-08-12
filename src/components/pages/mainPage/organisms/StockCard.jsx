@@ -4,7 +4,7 @@ import {
   codeToNumber,
   comma,
   getChangeColor,
-  getChangeSymbol,
+  getChangeSymbol, intToCode,
 } from "../../../../utils/convert";
 import { getChangePercentage } from "../../../../utils/calculate";
 import { FormatContext } from "../../../../App";
@@ -30,7 +30,7 @@ const StockCard = ({ stock }) => {
           {name}
         </div>
         <div className="stock-card-stock-code text-sm text-gray-500">
-          {stockCode}
+          {intToCode(stockCode)}
         </div>
       </div>
       <div className="stock-info-row mb-2 flex flex-row justify-between">

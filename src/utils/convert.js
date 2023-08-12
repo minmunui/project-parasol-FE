@@ -26,3 +26,8 @@ export const getChangeSymbol = (change) => {
     return change > 0 ? "▲" : "▼";
   }
 };
+
+
+export const intToCode = (num) => {
+    return num.toString().padStart(6, "0");
+}
