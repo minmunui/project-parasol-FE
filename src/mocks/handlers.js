@@ -1,186 +1,32 @@
 import { rest } from "msw";
+import { STOCK_DATAS } from "./datas/stockDatas";
+import { getPriceData, getRecommendData, getAllStockData } from "./getDatas";
 
 export const handlers = [
   rest.get("/stock/:stockCode", (req, res, ctx) => {
     const { stockCode } = req.params;
+
+    if (Object.keys(STOCK_DATAS).includes(stockCode)) {
+      return res(ctx.status(200), ctx.json(STOCK_DATAS[stockCode]));
+    }
     return res(
-      ctx.status(200),
+      ctx.status(404),
       ctx.json({
-        stockCode,
-        name: "삼성전자",
-        price: {
-          date: "2023-08-11",
-          value: 4500,
-          change: 100,
-        },
-        recentRecommend: {
-          date: "2023-08-11",
-          buy: 70,
-        },
+        message: "종목을 찾을 수 없습니다.",
       }),
     );
   }),
-
   rest.get("/price/:stockCode/:page", (req, res, ctx) => {
     const { stockCode, page } = req.params;
-    return res(
-      ctx.status(200),
-      ctx.json({
-        stockCode,
-        page,
-        price: [
-          {
-            date: "2023-08-13",
-            value: 4500,
-            change: 100,
-          },
-          {
-            date: "2023-08-12",
-            value: 4500,
-            change: -100,
-          },
-          {
-            date: "2023-08-11",
-            value: 4500,
-            change: 100,
-          },
-          {
-            date: "2023-08-10",
-            value: 4500,
-            change: 100,
-          },
-          {
-            date: "2023-08-09",
-            value: 4500,
-            change: 100,
-          },
-          {
-            date: "2023-08-08",
-            value: 4500,
-            change: 100,
-          },
-          {
-            date: "2023-08-07",
-            value: 4500,
-            change: 100,
-          },
-          {
-            date: "2023-08-06",
-            value: 4500,
-            change: 100,
-          },
-          {
-            date: "2023-08-05",
-            value: 4500,
-            change: 100,
-          },
-          {
-            date: "2023-08-05",
-            value: 4500,
-            change: 100,
-          },
-        ],
-      }),
-    );
+    return res(ctx.status(200), ctx.json(getPriceData(stockCode, page)));
   }),
 
   rest.get("/recommend/:stockCode/:page", (req, res, ctx) => {
     const { stockCode, page } = req.params;
-    return res(
-      ctx.status(200),
-      ctx.json({
-        stockCode,
-        page,
-        recommend: [
-          {
-            date: "2023-08-13",
-            buy: 70,
-          },
-          {
-            date: "2023-08-12",
-            buy: 70,
-          },
-          {
-            date: "2023-08-11",
-            buy: 70,
-          },
-          {
-            date: "2023-08-10",
-            buy: 70,
-          },
-          {
-            date: "2023-08-09",
-            buy: 70,
-          },
-          {
-            date: "2023-08-08",
-            buy: 70,
-          },
-          {
-            date: "2023-08-07",
-            buy: 70,
-          },
-          {
-            date: "2023-08-06",
-            buy: 70,
-          },
-          {
-            date: "2023-08-05",
-            buy: 70,
-          },
-          {
-            date: "2023-08-04",
-            buy: 70,
-          },
-        ],
-      }),
-    );
+    return res(ctx.status(200), ctx.json(getRecommendData(stockCode, page)));
   }),
 
   rest.get("/stocks", (req, res, ctx) => {
-    return res(
-      ctx.status(200),
-      ctx.json([
-        {
-          name: "삼성전자",
-          stockCode: 5930,
-          price: {
-            date: "2023-08-11",
-            value: 4500,
-            change: 100,
-          },
-          recentRecommend: {
-            date: "2023-08-11",
-            buy: 70,
-          },
-        },
-        {
-          name: "현대자동차",
-          stockCode: 5930,
-          price: {
-            date: "2023-08-11",
-            value: 4500,
-            change: -100,
-          },
-          recentRecommend: {
-            date: "2023-08-11",
-            buy: 70,
-          },
-        },
-        {
-          name: "현대자동차",
-          stockCode: 5930,
-          price: {
-            date: "2023-08-11",
-            value: 4500,
-            change: 100,
-          },
-          recentRecommend: {
-            date: "2023-08-11",
-            buy: 70,
-          },
-        },
-      ]),
-    );
+    return res(ctx.status(200), ctx.json(getAllStockData()));
   }),
 ];
