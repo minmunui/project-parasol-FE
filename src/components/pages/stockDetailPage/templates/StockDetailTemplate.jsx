@@ -1,10 +1,9 @@
 import { intToCode } from "../../../../utils/convert";
-import PriceGraph from "../molecules/PriceGraph";
+import PriceGraph from "../organisms/PriceGraph";
 import {
   getRecommendText,
   getRecommendTextColor,
 } from "../../../../utils/recommends";
-
 const RecommendSummary = ({ recommend }) => {
   const { buy, date } = recommend;
   return (
@@ -35,8 +34,8 @@ const StockDetailTemplate = ({ stock }) => {
 
   return (
     <div className={"stock-detail-template flex w-full flex-col items-center"}>
-        <StockTitle stockName={name} stockCode={stockCode} />
-        <RecommendSummary recommend={recentRecommend} />
+      <StockTitle stockName={name} stockCode={stockCode} />
+      <RecommendSummary recommend={recentRecommend} />
       <h2 className={"current-price-title text-3xl font-extrabold"}>
         최근 가격
       </h2>
