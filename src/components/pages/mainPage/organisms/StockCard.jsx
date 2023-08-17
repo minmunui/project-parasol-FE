@@ -1,7 +1,6 @@
 import RecommendBadge from "../../../commons/atoms/RecommendBadge";
 import { getRecommend } from "../../../../utils/recommends";
 import {
-  codeToNumber,
   comma,
   getChangeColor,
   getChangeSymbol, intToCode,
