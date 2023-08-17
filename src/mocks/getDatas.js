@@ -3,6 +3,7 @@ import { MAX_PAGE_SIZE } from "../utils/constants";
 import { STOCK_DATAS } from "./datas/stockDatas";
 
 const isExceedPage = (page, dataLength) => {
+  page = parseInt(page)
   const MAX_PAGE = dataLength / MAX_PAGE_SIZE + 1;
   if (page < 0) {
     throw new Error("page는 0보다 작을 수 없습니다.");
@@ -13,12 +14,14 @@ const isExceedPage = (page, dataLength) => {
   return true;
 };
 export const getPriceData = (stockCode, page) => {
+  page = parseInt(page)
   if (isExceedPage(page, PRICE_DATAS.length)) {
     return PRICE_DATAS.slice(page * MAX_PAGE_SIZE, (page + 1) * MAX_PAGE_SIZE);
   }
 };
 
 export const getRecommendData = (stockCode, page) => {
+    page = parseInt(page)
   if (isExceedPage(page, PRICE_DATAS.length)) {
     return PRICE_DATAS.slice(page * MAX_PAGE_SIZE, (page + 1) * MAX_PAGE_SIZE);
   }
