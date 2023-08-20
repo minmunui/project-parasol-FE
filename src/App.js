@@ -2,7 +2,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createContext } from "react";
 import MainPage from "./components/pages/mainPage/pages/MainPage";
-import MainLayout from "./components/layouts/MainLayout";
+import MainLayout from "./components/layouts/mainLayout/MainLayout";
 import useFormat from "./hooks/useFormat";
 import StockDetailPage from "./components/pages/stockDetailPage/pages/StockDetailPage";
 import { QueryClient, QueryClientProvider } from "react-query";
