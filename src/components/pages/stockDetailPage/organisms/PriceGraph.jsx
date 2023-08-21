@@ -2,8 +2,7 @@ import useFetchPrice from "../../../../hooks/useFetchPrice";
 
 import { useEffect, useRef, useState } from "react";
 import GraphBar from "../atoms/GraphBar";
-import { comma } from "../../../../utils/convert";
-import useComponentSize from "../../../../hooks/useComponentSize";
+import YAxis from "../atoms/YAxis";
 
 const PriceGraph = ({ stockCode }) => {
   const { prices, fetchNextPage, hasNextPage, isFetchingNextPage } =
@@ -13,9 +12,7 @@ const PriceGraph = ({ stockCode }) => {
   const [minValue, setMinValue] = useState(0);
 
   const domObserver = useRef(null);
-  const yAxis = useRef(null);
 
-  const yAxisWidth = useComponentSize(yAxis).width;
 
   useEffect(() => {
     if (prices) {
@@ -53,22 +50,7 @@ const PriceGraph = ({ stockCode }) => {
           "graph-contents flex h-[400px] w-full flex-row-reverse items-end gap-4 overflow-x-scroll whitespace-nowrap p-4"
         }
       >
-      <div
-          className={
-            "graph-y-axis absolute z-10 flex h-[calc(400px-14px)] translate-y-2 flex-col content-between justify-between"
-          }
-          ref={yAxis}
-      >
-        <div className={"y-axis-item"}>{comma(maxValue)}₩</div>
-        <div className={"y-axis-item"}>
-          {comma((maxValue + minValue) / 2)}₩
-        </div>
-        <div className={"y-axis-item"}>{comma(minValue)}₩</div>
-      </div>
-        <div
-          className={"graph-y-axis-dummy h-full flex-shrink-0 bg-white"}
-          style={{ width: yAxisWidth + 20 +"px" }}
-        ></div>
+        <YAxis maxValue={maxValue} minValue={minValue} />
         {prices.map((value, index) => (
           <GraphBar
             value={value.value}
