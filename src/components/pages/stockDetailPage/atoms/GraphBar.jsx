@@ -8,7 +8,7 @@ import { useContext } from "react";
  * @param {string} tooltip - 해당 bar에 마우스를 올렸을 때 나타날 tooltip을 나타냅니다.
  * @constructor
  */
-const GraphBar = ({ value, maxValue, tooltip, key }) => {
+const GraphBar = ({ value, maxValue, tooltip}) => {
   const { showTooltip, hideTooltip, isTooltipVisible } =
     useContext(TooltipContext);
   return (
@@ -28,7 +28,8 @@ const GraphBar = ({ value, maxValue, tooltip, key }) => {
         "graph-bar flex w-[20px] flex-shrink-0 transform flex-col items-center bg-green-300 transition-all hover:border-2 hover:border-green-700"
       }
       style={{ height: `${(value / maxValue) * 100}%` }}
-    ></div>
+    >
+    </div>
   );
 };
 
