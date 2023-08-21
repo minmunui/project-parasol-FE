@@ -8,7 +8,7 @@ import { useContext } from "react";
  * @param {string} tooltip - 해당 bar에 마우스를 올렸을 때 나타날 tooltip을 나타냅니다.
  * @constructor
  */
-const GraphBar = ({ value, maxValue, tooltip}) => {
+const GraphBar = ({ value, maxValue, tooltip, isFirstDay, date}) => {
   const { showTooltip, hideTooltip, isTooltipVisible } =
     useContext(TooltipContext);
   return (
@@ -25,10 +25,16 @@ const GraphBar = ({ value, maxValue, tooltip}) => {
         }
       }}
       className={
-        "graph-bar flex w-[20px] flex-shrink-0 transform flex-col items-center bg-green-300 transition-all hover:border-2 hover:border-green-700"
+        "graph-bar flex w-[20px] flex-shrink-0 transform flex-col items-center bg-green-300 transition-all hover:border-2 hover:border-green-700 " +
+        (isFirstDay ? "z-10" : "")
       }
       style={{ height: `${(value / maxValue) * 100}%` }}
     >
+      {isFirstDay && (
+        <div className={"absolute z-10 text-xs text-gray-500 -bottom-5"}>
+          {date}
+        </div>
+      )}
     </div>
   );
 };

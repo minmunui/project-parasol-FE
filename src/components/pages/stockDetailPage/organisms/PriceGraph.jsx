@@ -1,8 +1,9 @@
 import useFetchPrice from "../../../../hooks/useFetchPrice";
 
 import { useEffect, useRef, useState } from "react";
-import GraphBar from "../atoms/GraphBar";
 import YAxis from "../atoms/YAxis";
+import GraphBar from "../atoms/GraphBar";
+import GraphBars from "../molecules/GraphBars";
 
 const PriceGraph = ({ stockCode }) => {
   const { prices, fetchNextPage, hasNextPage, isFetchingNextPage } =
@@ -42,23 +43,16 @@ const PriceGraph = ({ stockCode }) => {
   return (
     <div
       className={
-        "graph-wrapper flex w-full max-w-[786px] overflow-hidden rounded-md border-2 border-gray-400 relative"
+        "graph-wrapper flex w-full max-w-[786px] overflow-hidden rounded-md border-2 border-gray-400 relative flex-col"
       }
     >
       <div
         className={
-          "graph-contents flex h-[400px] w-full flex-row-reverse items-end gap-4 overflow-x-scroll whitespace-nowrap p-4"
+          "graph-contents flex h-[400px] w-full flex-row-reverse items-end gap-4 overflow-x-scroll overflow-y-visible whitespace-nowrap p-4 pb-8"
         }
       >
         <YAxis maxValue={maxValue} minValue={minValue} />
-        {prices.map((value, index) => (
-          <GraphBar
-            value={value.value}
-            key={index}
-            maxValue={maxValue}
-            tooltip={`${value.date} ${value.value}₩`}
-          />
-        ))}
+        <GraphBars data={prices} maxValue={maxValue} minValue={minValue} />
         <div
           ref={domObserver}
           className={"observer h-full w-1 bg-purple-400"}

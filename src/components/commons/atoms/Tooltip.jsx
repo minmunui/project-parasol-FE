@@ -7,7 +7,7 @@ const Tooltip = ({ children, text }) => {
   return (
     <div
       className={
-        "tooltip absolute z-10 flex whitespace-nowrap items-center justify-center rounded-md bg-gray-700 text-sm text-white nowrap p-2 " +
+        "tooltip absolute z-20 flex whitespace-nowrap items-center justify-center rounded-md bg-gray-700 text-sm text-white nowrap p-2 " +
         (isTooltipVisible ? "visible" : "invisible")
       }
       style={{
