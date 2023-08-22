@@ -9,10 +9,10 @@ const RecommendSummary = ({ recommend }) => {
   return (
     <div className={"flex flex-col items-center"}>
       <span className={"flex flex-col text-2xl font-semibold"}>
-        <span className={"text-lg"}>{date}기준</span>
         <span className={"font-bold " + getRecommendTextColor(buy)}>
           {getRecommendText(buy)}({buy}%)
         </span>
+        <span className={"text-sm text-gray-500"}>{date}기준</span>
       </span>
     </div>
   );
@@ -22,7 +22,7 @@ const StockTitle = ({ stockName, stockCode }) => {
   return (
     <div className={"stock-title"}>
       <h1 className={"text-4xl font-extrabold"}>{stockName}</h1>
-      <span className={"text-2xl font-semibold text-gray-500"}>
+      <span className={"text-lg font-semibold text-gray-500"}>
         ({intToCode(stockCode)})
       </span>
     </div>
@@ -34,13 +34,14 @@ const StockDetailTemplate = ({ stock }) => {
 
   return (
     <div className={"stock-detail-template flex w-full flex-col items-center"}>
+        <div className={"title-wrapper flex py-8 gap-4 items-center"}>
       <StockTitle stockName={name} stockCode={stockCode} />
       <RecommendSummary recommend={recentRecommend} />
-      <h2 className={"current-price-title text-3xl font-extrabold"}>
+        </div>
+      <h2 className={"current-price-title text-3xl font-extrabold pb-2"}>
         최근 가격
       </h2>
       <PriceGraph stockCode={stockCode} />
-
     </div>
   );
 };
