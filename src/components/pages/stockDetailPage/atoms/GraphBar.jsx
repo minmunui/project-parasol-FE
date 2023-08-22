@@ -49,7 +49,7 @@ const GraphBar = ({
         <div
           className={
             "graph-bar flex w-[14px] flex-shrink-0 transform flex-col items-center bg-green-300 transition-all " +
-            (isFirstDay ? "z-10" : "") +
+            (isFirstDay ? "z-10 " : "") +
             (active ? "border-2 border-green-700" : "")
           }
           style={{
