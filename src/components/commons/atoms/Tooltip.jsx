@@ -11,8 +11,8 @@ const Tooltip = ({ children, text }) => {
         (isTooltipVisible ? "visible" : "invisible")
       }
       style={{
-        top: `${tooltipLocation.y + 3}px`,
-        left: `${tooltipLocation.x + 3}px`,
+        top: `${tooltipLocation.y - 40}px`,
+        left: `${tooltipLocation.x}px`,
       }}
     >
       {tooltipContent}
