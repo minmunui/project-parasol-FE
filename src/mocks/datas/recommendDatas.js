@@ -39,4 +39,16 @@ export const RECOMMEND_DATA = [
     date: "2023-08-04",
     buy: 70,
   },
+  {
+    date: "2023-08-03",
+    buy: 70,
+  },
+  {
+    date: "2023-08-02",
+    buy: 70,
+  },
+  {
+    date: "2023-08-01",
+    buy: 70,
+  },
 ];
