@@ -8,18 +8,19 @@ export const getChangePercentage = (price, change) => {
 };
 
 export const getFirstDaysOfMonth = (dates) => {
+  const reversedDates = [...dates].reverse();
   const firstDayIndices = [];
   let currentMonth = -1;
 
-  for (let i = 0; i < dates.length; i++) {
-    const date = new Date(dates[i].date);
+  for (let i = 0; i < reversedDates.length; i++) {
+    const date = new Date(reversedDates[i].date);
     const month = date.getMonth();
 
     if (month !== currentMonth) {
-      firstDayIndices.push(i);
+      firstDayIndices.push(dates.length-i-1);
       currentMonth = month;
     }
   }
-
+  firstDayIndices.splice(0, 1);
   return firstDayIndices;
 };

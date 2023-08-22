@@ -2,7 +2,6 @@ import useFetchPrice from "../../../../hooks/useFetchPrice";
 
 import { useEffect, useRef, useState } from "react";
 import YAxis from "../atoms/YAxis";
-import GraphBar from "../atoms/GraphBar";
 import GraphBars from "../molecules/GraphBars";
 
 const PriceGraph = ({ stockCode }) => {
@@ -48,7 +47,7 @@ const PriceGraph = ({ stockCode }) => {
     >
       <div
         className={
-          "graph-contents flex h-[400px] w-full flex-row-reverse items-end gap-4 overflow-x-scroll overflow-y-visible whitespace-nowrap p-4 pb-8"
+          "graph-contents flex h-[400px] w-full flex-row-reverse items-end gap-2 overflow-x-scroll overflow-y-visible whitespace-nowrap pt-4 pb-8"
         }
       >
         <YAxis maxValue={maxValue} minValue={minValue} />

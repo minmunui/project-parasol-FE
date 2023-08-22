@@ -236,7 +236,7 @@ export const PRICE_DATAS = [
   },
   {
     date: "2023-06-27",
-    value: 4500,
+    value: 1000,
     change: 100,
   },
 ];
