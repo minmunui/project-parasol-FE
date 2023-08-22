@@ -8,8 +8,6 @@ const PriceGraph = ({ stockCode }) => {
   const { prices, recommends, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useFetchPrice(stockCode);
 
-  console.log(prices)
-
   const [maxValue, setMaxValue] = useState(1);
   const [minValue, setMinValue] = useState(0);
 

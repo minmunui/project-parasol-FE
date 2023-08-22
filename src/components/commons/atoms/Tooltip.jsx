@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import { TooltipContext } from "../../../App";
+import {newLineToBr} from "../../../utils/convert";
 
-const Tooltip = ({ children, text }) => {
+const Tooltip = () => {
   const { isTooltipVisible, tooltipLocation, tooltipContent } =
     useContext(TooltipContext);
   return (
@@ -11,11 +12,11 @@ const Tooltip = ({ children, text }) => {
         (isTooltipVisible ? "visible" : "invisible")
       }
       style={{
-        top: `${tooltipLocation.y - 40}px`,
+        top: `${tooltipLocation.y - 60}px`,
         left: `${tooltipLocation.x}px`,
       }}
     >
-      {tooltipContent}
+      {newLineToBr(tooltipContent)}
     </div>
   );
 };

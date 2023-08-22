@@ -16,7 +16,7 @@ const useTooltip = () => {
     if (isTooltipVisible) {
       if (mouseLocation.x > windowWidth / 2) {
         setTooltipLocation({
-          x: mouseLocation.x - 153,
+          x: mouseLocation.x - 140,
           y: mouseLocation.y
         });
       } else {
