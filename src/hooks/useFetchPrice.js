@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useInfiniteQuery } from "react-query";
 import { MAX_PAGE_SIZE } from "../utils/constants";
-import { getPriceByPage } from "../services/price";
 import _ from "lodash";
 import getGraphDataByPage from "../services/graphData";
 
