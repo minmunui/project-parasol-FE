@@ -5,8 +5,10 @@ import YAxis from "../atoms/YAxis";
 import GraphBars from "../molecules/GraphBars";
 
 const PriceGraph = ({ stockCode }) => {
-  const { prices, fetchNextPage, hasNextPage, isFetchingNextPage } =
+  const { prices, recommends, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useFetchPrice(stockCode);
+
+  console.log(prices)
 
   const [maxValue, setMaxValue] = useState(1);
   const [minValue, setMinValue] = useState(0);
@@ -37,7 +39,7 @@ const PriceGraph = ({ stockCode }) => {
     return () => {
       io.disconnect();
     };
-  }, [fetchNextPage, hasNextPage, isFetchingNextPage, prices]);
+  }, [fetchNextPage, hasNextPage, isFetchingNextPage, prices, recommends]);
 
   return (
     <div
@@ -51,7 +53,7 @@ const PriceGraph = ({ stockCode }) => {
         }
       >
         <YAxis maxValue={maxValue} minValue={minValue} />
-        <GraphBars data={prices} maxValue={maxValue} minValue={minValue} />
+        <GraphBars prices={prices} recommends={recommends} maxValue={maxValue} minValue={minValue} />
         <div
           ref={domObserver}
           className={"observer h-full w-1 bg-purple-400"}
