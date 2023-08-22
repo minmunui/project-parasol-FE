@@ -1,6 +1,7 @@
 import { PRICE_DATAS } from "./datas/priceDatas";
 import { MAX_PAGE_SIZE } from "../utils/constants";
 import { STOCK_DATAS } from "./datas/stockDatas";
+import {RECOMMEND_DATA} from "./datas/recommendDatas";
 
 const isExceedPage = (page, dataLength) => {
   page = parseInt(page)
@@ -21,9 +22,9 @@ export const getPriceData = (stockCode, page) => {
 };
 
 export const getRecommendData = (stockCode, page) => {
-    page = parseInt(page)
-  if (isExceedPage(page, PRICE_DATAS.length)) {
-    return PRICE_DATAS.slice(page * MAX_PAGE_SIZE, (page + 1) * MAX_PAGE_SIZE);
+  page = parseInt(page)
+  if (isExceedPage(page, RECOMMEND_DATA.length)) {
+    return RECOMMEND_DATA.slice(page * MAX_PAGE_SIZE, (page + 1) * MAX_PAGE_SIZE);
   }
 };
 
