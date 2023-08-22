@@ -8,7 +8,7 @@ export default function useFetchPrice(stockCode) {
   const [prices, setPrices] = useState([]);
 
   const infiniteQuery = useInfiniteQuery(
-    ["getPriceByPage"],
+    ["getGraphDataByPage"],
     async ({ pageParam = 0 }) => getGraphDataByPage(stockCode, pageParam),
     // lastPage: 이전 페이지의 데이터
     // allPages: 이전 페이지를 포함한 모든 페이지의 데이터
