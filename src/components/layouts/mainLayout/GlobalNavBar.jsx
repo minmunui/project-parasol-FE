@@ -29,7 +29,6 @@ const GlobalNavBar = () => {
               setIsPercent(!isPercent);
             }}
           />
-          <div>Menu</div>
         </div>
       </nav>
     </>
