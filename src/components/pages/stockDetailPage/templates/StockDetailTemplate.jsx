@@ -40,6 +40,7 @@ const StockDetailTemplate = ({ stock }) => {
         최근 가격
       </h2>
       <PriceGraph stockCode={stockCode} />
+
     </div>
   );
 };

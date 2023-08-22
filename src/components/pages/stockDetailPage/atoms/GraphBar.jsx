@@ -1,5 +1,6 @@
 import { TooltipContext } from "../../../../App";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import RecommendDot from "./RecommendDot";
 
 /**
  *
@@ -11,34 +12,65 @@ import { useContext } from "react";
  * @param {string} date
  * @constructor
  */
-const GraphBar = ({ value, maxValue, minValue, tooltip, isFirstDay, date}) => {
+const GraphBar = ({
+  value,
+  recommend,
+  maxValue,
+  minValue,
+  tooltip,
+  isFirstDay,
+  date,
+}) => {
   const { showTooltip, hideTooltip, isTooltipVisible } =
     useContext(TooltipContext);
+  const [active, setActive] = useState(false);
+
   return (
-    <div
-      onMouseEnter={() => {
-        showTooltip(tooltip);
-      }}
-      onMouseLeave={() => {
-        hideTooltip();
-      }}
-      onClick={() => {
-        if (!isTooltipVisible) {
-          setTimeout(() => showTooltip(tooltip), 40);
+    value && (
+      <div
+        className={
+          "bar-wrapper relative flex h-full flex-col items-center justify-end transition-all " +
+          (active ? "bg-gray-100" : "")
         }
-      }}
-      className={
-        "graph-bar flex w-[14px] flex-shrink-0 transform flex-col items-center bg-green-300 transition-all hover:border-2 hover:border-green-700 " +
-        (isFirstDay ? "z-10" : "")
-      }
-      style={{ height: `${((value-minValue) / (maxValue - minValue)) * 90 + 10}%` }}
-    >
-      {isFirstDay && (
-        <div className={"absolute z-10 text-xs text-gray-500 -bottom-5"}>
-          {date}
+        onMouseEnter={() => {
+          showTooltip(tooltip);
+          setActive(true);
+        }}
+        onMouseLeave={() => {
+          hideTooltip();
+          setActive(false);
+        }}
+        onClick={() => {
+          if (!isTooltipVisible) {
+            setTimeout(() => showTooltip(tooltip), 40);
+          }
+        }}
+      >
+        <div
+          className={
+            "graph-bar flex w-[14px] flex-shrink-0 transform flex-col items-center bg-green-300 transition-all " +
+            (isFirstDay ? "z-10" : "") +
+            (active ? "border-2 border-green-700" : "")
+          }
+          style={{
+            height: `${
+              ((value - minValue) / (maxValue - minValue)) * 90 + 10
+            }%`,
+          }}
+        >
+          {isFirstDay && (
+            <div
+              className={
+                "date-axis absolute -bottom-5 z-10 text-xs text-gray-500"
+              }
+            >
+              {date}
+            </div>
+          )}
         </div>
-      )}
-    </div>
+        {recommend !== -1 && <RecommendDot active={active} recommend={recommend} />}
+      </div>
+    )
   );
 };
 

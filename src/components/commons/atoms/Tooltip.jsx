@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { TooltipContext } from "../../../App";
-import {newLineToBr} from "../../../utils/convert";
+import { newLineToBr } from "../../../utils/convert";
 
 const Tooltip = () => {
   const { isTooltipVisible, tooltipLocation, tooltipContent } =
@@ -8,12 +8,13 @@ const Tooltip = () => {
   return (
     <div
       className={
-        "tooltip nowrap fixed z-20 flex items-center justify-center whitespace-nowrap rounded-md bg-gray-700 p-2 text-sm text-white " +
+        "tooltip nowrap fixed flex items-center justify-center whitespace-nowrap rounded-md bg-gray-700 p-2 text-sm text-white " +
         (isTooltipVisible ? "visible" : "invisible")
       }
       style={{
         top: `${tooltipLocation.y - 60}px`,
         left: `${tooltipLocation.x}px`,
+        zIndex: 1000,
       }}
     >
       {newLineToBr(tooltipContent)}

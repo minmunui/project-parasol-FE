@@ -14,7 +14,7 @@ const GraphBars = ({ prices, maxValue, minValue }) => {
       {prices.map((value, index) => (
         <GraphBar
           value={value.value}
-          value2={value.recommend}
+          recommend={value.buy}
           date={value.date}
           key={index}
           maxValue={maxValue}
