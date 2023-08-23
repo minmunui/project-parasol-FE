@@ -1,3 +1,5 @@
+import { intToCode } from "./convert";
+
 /**
  * price와 change를 이용하여 해당 change에 대한 변화율을 계산합니다.
  * @param {number} price
@@ -23,4 +25,16 @@ export const getFirstDaysOfMonth = (dates) => {
   }
   firstDayIndices.splice(0, 1);
   return firstDayIndices;
+};
+
+export const filterStocks = (stocks, filter) => {
+  return stocks.filter((stock) => {
+    return (
+      stock.name.includes(filter) || intToCode(stock.stockCode).includes(filter)
+    );
+  });
+};
+
+export const sortStocks = (stocks, sort) => {
+  return stocks.toSorted(sort.compare);
 };
