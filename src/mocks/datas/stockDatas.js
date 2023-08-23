@@ -22,7 +22,7 @@ export const STOCK_DATAS = {
     },
     recentRecommend: {
       date: "2023-08-11",
-      buy: 70,
+      buy: 30,
     },
   },
 };
