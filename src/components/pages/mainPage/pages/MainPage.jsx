@@ -8,6 +8,8 @@ import Toggle from "../../../commons/atoms/Toggle";
 import useInput from "../../../../hooks/useInput";
 import { IoClose } from "react-icons/io5";
 import { filterStocks } from "../../../../utils/calculate";
+import { Head } from "../../../commons/atoms/Head";
+import {DEFAULT_APP_DESCRIPTION, DEFAULT_APP_TITLE} from "../../../../utils/constants";
 
 const MainPage = () => {
   const { data, isSuccess } = useQuery("stocks", getStocks);
@@ -35,6 +37,7 @@ const MainPage = () => {
     <div
       className={"main-page flex w-full max-w-[1024px] flex-col items-center"}
     >
+      <Head title={DEFAULT_APP_TITLE} description={DEFAULT_APP_DESCRIPTION}/>
       <div className={"search flex w-full items-center py-4"}>
         <input
           type={"text"}

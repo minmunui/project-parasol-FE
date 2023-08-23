@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "파라솔 - 심층 강화학습을 이용한 주식 추천 시스템",
+  "name": "강화학습 모델의 주식투자 학습 결과를 확인하세요",
   "icons": [
     {
       "src": "favicon.ico",

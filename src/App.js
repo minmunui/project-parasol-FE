@@ -9,6 +9,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { SkeletonTheme } from "react-loading-skeleton";
 import Tooltip from "./components/commons/atoms/Tooltip";
 import useTooltip from "./hooks/useTooltip";
+import { HelmetProvider } from "react-helmet-async";
 
 export const FormatContext = createContext(null);
 export const TooltipContext = createContext(null);
@@ -26,31 +27,33 @@ function App() {
   } = useTooltip();
   return (
     <div className={"App relative min-h-screen w-full"}>
-      <TooltipContext.Provider
-        value={{
-          isTooltipVisible,
-          tooltipLocation,
-          handleMouseMove,
-          hideTooltip,
-          showTooltip,
-          tooltipContent,
-        }}
-      >
-        <FormatContext.Provider value={{ isPercent, setIsPercent }}>
-          <SkeletonTheme color={"#202020"} highlightColor={"#aaa"} />
-          <QueryClientProvider client={queryClient}>
-            <BrowserRouter>
-              <Tooltip />
-              <Routes>
-                <Route element={<MainLayout />}>
-                  <Route path="/" element={<MainPage />} />
-                  <Route path="/stock/:id" element={<StockDetailPage />} />
-                </Route>
-              </Routes>
-            </BrowserRouter>
-          </QueryClientProvider>
-        </FormatContext.Provider>
-      </TooltipContext.Provider>
+      <HelmetProvider>
+        <TooltipContext.Provider
+          value={{
+            isTooltipVisible,
+            tooltipLocation,
+            handleMouseMove,
+            hideTooltip,
+            showTooltip,
+            tooltipContent,
+          }}
+        >
+          <FormatContext.Provider value={{ isPercent, setIsPercent }}>
+            <SkeletonTheme color={"#202020"} highlightColor={"#aaa"} />
+            <QueryClientProvider client={queryClient}>
+              <BrowserRouter>
+                <Tooltip />
+                <Routes>
+                  <Route element={<MainLayout />}>
+                    <Route path="/" element={<MainPage />} />
+                    <Route path="/stock/:id" element={<StockDetailPage />} />
+                  </Route>
+                </Routes>
+              </BrowserRouter>
+            </QueryClientProvider>
+          </FormatContext.Provider>
+        </TooltipContext.Provider>
+      </HelmetProvider>
     </div>
   );
 }
