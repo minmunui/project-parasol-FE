@@ -19,7 +19,7 @@ export const getFirstDaysOfMonth = (dates) => {
     const month = date.getMonth();
 
     if (month !== currentMonth) {
-      firstDayIndices.push(dates.length-i-1);
+      firstDayIndices.push(dates.length - i - 1);
       currentMonth = month;
     }
   }
