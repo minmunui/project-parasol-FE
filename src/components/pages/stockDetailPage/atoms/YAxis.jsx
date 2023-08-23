@@ -11,7 +11,7 @@ const YAxis = ({ maxValue, minValue }) => {
     <>
       <div
         className={
-          "graph-y-axis absolute top-0 z-50 flex translate-y-2 flex-col content-between justify-between gap-4 text-xs text-gray-500 bg-white h-full pb-[67px] px-1.5"
+          "graph-y-axis absolute top-0 z-50 flex flex-col content-between justify-between gap-4 text-xs text-gray-500 bg-white h-full pb-[58px] px-1.5 pt-2 border-l-2 border-l-gray-300"
         }
         ref={yAxis}
       >
@@ -21,7 +21,7 @@ const YAxis = ({ maxValue, minValue }) => {
       </div>
       <div
         className={"graph-y-axis-dummy h-full flex-shrink-0 bg-white z-40"}
-        style={{ width: yAxisWidth + 8 + "px" }}
+        style={{ width: yAxisWidth + 12 + "px" }}
         ref={dummy}
       ></div>
     </>

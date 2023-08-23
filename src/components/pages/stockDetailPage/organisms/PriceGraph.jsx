@@ -47,7 +47,7 @@ const PriceGraph = ({ stockCode }) => {
     >
       <div
         className={
-          "graph-contents flex h-[400px] w-full flex-row-reverse items-end gap-2 overflow-x-scroll overflow-y-visible whitespace-nowrap pt-4 pb-8"
+          "graph-contents flex h-[400px] w-full flex-row-reverse items-end gap-1.5 overflow-x-scroll overflow-y-visible whitespace-nowrap pt-4 pb-8"
         }
       >
         <YAxis maxValue={maxValue} minValue={minValue} />
