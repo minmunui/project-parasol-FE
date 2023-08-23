@@ -1,14 +1,27 @@
 import StockGrid from "../molecules/StockGrid";
 import { getStocks } from "../../../../services/stocks";
 import { useQuery } from "react-query";
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { FaSearch, FaTable } from "react-icons/fa";
 import StockList from "../organisms/StockList";
 import Toggle from "../../../commons/atoms/Toggle";
-
+import useInput from "../../../../hooks/useInput";
+import { IoClose } from "react-icons/io5";
+import {filterStocks} from "../../../../utils/calculate";
 const MainPage = () => {
-  const { data } = useQuery("stocks", getStocks);
+  const { data, isSuccess } = useQuery("stocks", getStocks);
+
   const [isTable, setIsTable] = useState(true);
+  const [filteredStocks, setFilteredStocks] = useState([]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      setFilteredStocks(data);
+    }
+  }, [isSuccess, data]);
+
+  const { value, setValue, onChange } = useInput("");
+
   return (
     <div
       className={"main-page flex w-full max-w-[1024px] flex-col items-center"}
@@ -20,11 +33,32 @@ const MainPage = () => {
           className={
             "h-[40px] w-full rounded-l-md border-2 border-gray-300 px-2 focus:border-green-300 focus:outline-none"
           }
-        />
+          value={value}
+          onChange={onChange}
+        ></input>
+        {value && (
+          <button
+            className={"absolute right-28 z-10 h-full text-sm text-gray-500 "}
+            onClick={() => {
+              setValue("");
+              setFilteredStocks(data);
+            }}
+          >
+            <IoClose size={20} />
+          </button>
+        )}
         <button
           className={
             "flex h-[40px] w-[40px] items-center justify-center rounded-r-md border-b-2 border-r-2 border-t-2 border-gray-300 focus:border-green-300 focus:outline-none"
           }
+          onClick={() => {
+            if (value) {
+              const filtered = filterStocks(data, value);
+              setFilteredStocks(filtered);
+            } else {
+              setFilteredStocks(data);
+            }
+          }}
         >
           <FaSearch />
         </button>
@@ -44,8 +78,8 @@ const MainPage = () => {
       </div>
 
       <Suspense fallback={<div>loading...</div>}>
-        {data && isTable && <StockList stocks={data} />}
-        {data && !isTable && <StockGrid stocks={data} />}
+        {data && isTable && <StockList stocks={filteredStocks} />}
+        {data && !isTable && <StockGrid stocks={filteredStocks} />}
       </Suspense>
     </div>
   );
