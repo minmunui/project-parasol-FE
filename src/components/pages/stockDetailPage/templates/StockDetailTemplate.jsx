@@ -39,9 +39,13 @@ const StockDetailTemplate = ({ stock }) => {
       <RecommendSummary recommend={recentRecommend} />
         </div>
       <h2 className={"current-price-title text-3xl font-extrabold pb-2"}>
-        최근 가격
+        최근 가격 및 추천도
       </h2>
       <PriceGraph stockCode={stockCode} />
+        <div className={"graph-info text-gray-500 text-sm"}>
+            각 막대는 해당 날짜의 종가를 의미하며 빨간 점은 해당 날짜의 추천도를 0%~100%로 나타냅니다.<br/>
+            일반적으로 50%를 기준으로 50% 이상이면 매수, 50% 이하면 매도를 추천합니다.
+        </div>
     </div>
   );
 };
