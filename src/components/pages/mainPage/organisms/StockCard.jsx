@@ -3,10 +3,11 @@ import { getRecommend } from "../../../../utils/recommends";
 import {
   comma,
   getChangeColor,
-  getChangeSymbol, intToCode,
+  getChangeSymbol,
+  intToCode,
 } from "../../../../utils/convert";
 import { getChangePercentage } from "../../../../utils/calculate";
-import { FormatContext } from "../../../../App";
+import { TooltipContext } from "../../../../App";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import RecommendBar from "../../../commons/atoms/RecommendBar";
@@ -14,7 +15,7 @@ import RecommendBar from "../../../commons/atoms/RecommendBar";
 const StockCard = ({ stock }) => {
   const { name, stockCode, price, recentRecommend } = stock;
   const { value, change } = price;
-  const { isPercent } = useContext(FormatContext);
+  const { hideTooltip, showTooltip } = useContext(TooltipContext);
 
   const navigate = useNavigate();
   return (
@@ -33,7 +34,15 @@ const StockCard = ({ stock }) => {
         </div>
       </div>
       <div className="stock-info-row mb-2 flex flex-row justify-between">
-        <div className="stock-card-price flex font-semibold">
+        <div
+          className="stock-card-price flex font-semibold"
+          onMouseEnter={() => {
+            showTooltip(`${stock.price.date} 기준`);
+          }}
+          onMouseLeave={() => {
+            hideTooltip();
+          }}
+        >
           {comma(value)}
           <span className={"flex items-end text-sm"}>KRW</span>
           <div
@@ -43,14 +52,22 @@ const StockCard = ({ stock }) => {
             }
           >
             {getChangeSymbol(change)}
-            {isPercent
-              ? getChangePercentage(value, change) + "%"
-              : comma(change)}
+            {comma(change)}({getChangePercentage(value, change)}%)
           </div>
         </div>
         <RecommendBadge recommend={getRecommend(recentRecommend.buy)} />
       </div>
-      <RecommendBar recommend={recentRecommend.buy} />
+      <div
+        className={"recommend-bar-wrapper"}
+        onMouseEnter={() => {
+          showTooltip(`${stock.price.date} 기준`);
+        }}
+        onMouseLeave={() => {
+          hideTooltip();
+        }}
+      >
+        <RecommendBar recommend={recentRecommend.buy} />
+      </div>
     </div>
   );
 };
