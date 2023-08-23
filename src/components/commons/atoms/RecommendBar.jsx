@@ -2,7 +2,9 @@ const RecommendBar = ({ recommend }) => {
   const buy = recommend;
   const sell = (100 - recommend).toFixed(0);
   return (
-    <div className="recommend-bar flex h-4 w-full flex-row justify-between">
+    <div
+      className="recommend-bar flex h-4 w-full flex-row justify-between"
+    >
       <div
         className={
           "recommend-bar-buy flex flex-col items-center justify-center rounded-l-lg bg-red-500 text-sm font-bold text-white"
