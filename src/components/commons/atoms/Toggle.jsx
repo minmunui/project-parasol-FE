@@ -1,19 +1,14 @@
 /**
  * Toggle button component
- * @param {element} label
- * @param {callback} onClick
- * @param {boolean} active
- * @returns {JSX.Element}
+ * @param {element} label - JSX element
+ * @param {callback} onClick - callback function
+ * @param {boolean} active - active state
+ * @param {string} className - className
+ * @returns {JSX.Element} - Toggle button component
  * @constructor
  */
-const Toggle = ({ label , onClick, active }) => (
-  <div
-    className={
-      "toggle-button flex h-[25px] w-[40px] cursor-pointer items-center justify-end rounded-full transition-all flex justify-center " +
-      (active ? "bg-green-300" : "bg-gray-300")
-    }
-    onClick={onClick}
-  >
+const Toggle = ({ label, onClick, active, className }) => (
+  <div className={className} onClick={onClick}>
     {label}
   </div>
 );
