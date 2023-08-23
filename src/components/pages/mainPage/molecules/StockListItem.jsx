@@ -2,7 +2,7 @@ import { getChangePercentage } from "../../../../utils/calculate";
 import {
   comma,
   getChangeColor,
-  getChangeSymbol,
+  getChangeSymbol, intToCode,
 } from "../../../../utils/convert";
 import RecommendBar from "../../../commons/atoms/RecommendBar";
 import { useNavigate } from "react-router-dom";
@@ -13,20 +13,19 @@ const StockListItem = ({ stock }) => {
   const navigate = useNavigate();
   const { hideTooltip, showTooltip } =
     useContext(TooltipContext);
-  console.log(stock)
   return (
     <div
       className={
-        "stock-list-item flex w-full cursor-pointer justify-between gap-3 font-semibold transition-all hover:scale-[102%] hover:bg-green-100"
+        "stock-list-item flex w-full cursor-pointer justify-between gap-3 font-semibold transition-all hover:scale-[102%] hover:bg-green-100 border-b border-gray-200"
       }
       onClick={() => {
         navigate(`/stock/${stock.stockCode}`);
       }}
     >
       <div className={"stock-title flex w-1/2 justify-between"}>
-        <span className={"stock-name"}>{stock.name}</span>
+        <span className={"stock-name line-clamp-1 text-left"}>{stock.name}</span>
         <span className={"stock-code text-sm text-gray-500"}>
-          {stock.stockCode}
+          {intToCode(stock.stockCode)}
         </span>
       </div>
       <div
