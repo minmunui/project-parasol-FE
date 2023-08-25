@@ -20,8 +20,3 @@ npm install
 ```bash
 npm run start
 ```
-
-### 4. TODO List
-- [x]  Infinity Scroll을 통한 Graph구현
-- [ ] GraphBar에 hover시 툴팁 표시
-- [ ] Recommend Bar 구ㅌ
