@@ -26,7 +26,7 @@ function App() {
     tooltipContent,
   } = useTooltip();
   return (
-    <div className={"App relative min-h-screen w-full"}>
+    <div className={"App relative min-h-screen w-full min-w-[300px]"}>
       <HelmetProvider>
         <TooltipContext.Provider
           value={{
