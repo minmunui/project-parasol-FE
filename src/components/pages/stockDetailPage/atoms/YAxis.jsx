@@ -14,7 +14,7 @@ const YAxis = ({ maxValue, minValue }) => {
     <>
       <div
         className={
-          "graph-y-axis absolute top-0 z-50 flex flex-col content-between justify-between gap-4 text-xs text-gray-500 bg-white h-full pb-[58px] px-1.5 pt-2 border-l-2 border-l-gray-300"
+          "graph-y-axis absolute top-0 z-50 flex h-full flex-col content-between justify-between gap-4 border-l-2 border-l-gray-300 bg-white px-1.5 pb-[58px] pt-2 text-xs text-gray-500"
         }
         ref={yAxis}
       >
