@@ -1,10 +1,13 @@
 import { TooltipContext } from "../../../../App";
 import { useContext, useState } from "react";
 import RecommendDot from "./RecommendDot";
+import { PriceGraphContext } from "../organisms/PriceGraph";
+import { GRAPH_OPTIONS } from "../organisms/graphScaleConstants";
 
 /**
  *
  * @param {number} value - 해당 bar가 표시할 value를 나타냅니다.
+ * @param {number} recommend - 해당 bar가 표시할 추천도를 나타냅니다. -1이면 추천도 데이터가 없는 것을 의미합니다.
  * @param {number} maxValue - 해당 bar가 표시할 수 있는 가장 큰 수치를 나타냅니다. bar의 길이는 value / maximumValue로 결정됩니다.
  * @param {number} minValue
  * @param {string} tooltip - 해당 bar에 마우스를 올렸을 때 나타날 tooltip을 나타냅니다.
@@ -24,6 +27,8 @@ const GraphBar = ({
   const { showTooltip, hideTooltip, isTooltipVisible } =
     useContext(TooltipContext);
   const [active, setActive] = useState(false);
+
+  const { graphScale } = useContext(PriceGraphContext);
 
   return (
     value && (
@@ -48,9 +53,10 @@ const GraphBar = ({
       >
         <div
           className={
-            "graph-bar flex w-[14px] flex-shrink-0 transform flex-col items-center bg-green-300 transition-all " +
+            "graph-bar flex w-[14px] flex-shrink-0 transform flex-col items-center transition-all " +
             (isFirstDay ? "z-10 " : "") +
-            (active ? "border-2 border-green-700" : "")
+            (active ? "bg-blue-300 " : "bg-green-300 ") +
+            GRAPH_OPTIONS[graphScale].barWidth
           }
           style={{
             height: `${
@@ -68,7 +74,9 @@ const GraphBar = ({
             </div>
           )}
         </div>
-        {recommend !== -1 && <RecommendDot active={active} recommend={recommend} />}
+        {recommend !== -1 && (
+          <RecommendDot active={active} recommend={recommend} />
+        )}
       </div>
     )
   );
