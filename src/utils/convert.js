@@ -1,6 +1,6 @@
 /**
  * 숫자에 3자리마다 comma를 추가하는 함수
- * @param {number} num
+ * @param {string} num
  * @returns {string}
  */
 export const comma = (num) => {
@@ -39,5 +39,18 @@ export const newLineToBr = (str) => {
         <br />
       </>
     );
-  })
+  });
+};
+
+/**
+ * 숫자를 소수점 n자리까지 자르는 함수, n이 음수면 -n자리까지 0으로 채움
+ * @param {number} num
+ * @param {number}digits
+ * @returns {number|string}
+ */
+export const sliceDigits = (num, digits) => {
+  if (digits < 0) {
+    return ((num / Math.pow(10, -digits)).toFixed(0)) * (Math.pow(10, -digits));
+  }
+  return parseFloat(num.toFixed(digits));
 };
