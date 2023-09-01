@@ -13,13 +13,13 @@ const useComponentSize = (refComponent) => {
 
   const [size, setSize] = useState({ width: 0, height: 0 });
   useEffect(() => {
-    if (refComponent.current) {
-      setSize({
-        width: refComponent.current.offsetWidth,
-        height: refComponent.current.offsetHeight,
-      });
+    // if (refComponent.current) {
+    //   setSize({
+    //     width: refComponent.current.offsetWidth,
+    //     height: refComponent.current.offsetHeight,
+    //   });
       observer.observe(refComponent.current);
-    }
+
   }, [observer, refComponent]);
 
   return size;
