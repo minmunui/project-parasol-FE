@@ -74,6 +74,14 @@ const PriceGraph = ({ stockCode }) => {
           ></div>
         </div>
       </div>
+      <button
+        onClick={
+            () => {
+                console.log(prices)
+            }
+        }>
+        test
+      </button>
     </PriceGraphContext.Provider>
   );
 };
