@@ -7,8 +7,7 @@ import { BiMinus, BiPlus } from "react-icons/bi";
 const YAxis = ({ maxValue, minValue }) => {
   const yAxis = useRef(null);
   const dummy = useRef(null);
-  const { setNextScale, setPrevScale, graphScale } =
-    useContext(PriceGraphContext);
+  const { setNextScale, setPrevScale } = useContext(PriceGraphContext);
   const yAxisWidth = useComponentSize(yAxis).width;
   return (
     <>
@@ -36,20 +35,20 @@ const YAxis = ({ maxValue, minValue }) => {
               "flex w-1/2 justify-center border-b border-l border-t border-gray-400 p-1 hover:bg-gray-100"
             }
             onClick={() => {
-              if (graphScale <= 1) setNextScale();
+              setNextScale();
             }}
           >
-            <BiPlus />
+            <BiMinus />
           </button>
           <button
             className={
               "flex w-1/2 justify-center border-b border-r border-t border-gray-400 p-1 hover:bg-gray-100"
             }
             onClick={() => {
-              if (graphScale >= 1) setPrevScale();
+              setPrevScale();
             }}
           >
-            <BiMinus />
+            <BiPlus />
           </button>
         </div>
       </div>

@@ -1,6 +1,7 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { TooltipContext } from "../../../App";
 import { newLineToBr } from "../../../utils/convert";
+import useComponentSize from "../../../hooks/useComponentSize";
 
 const Tooltip = () => {
   const { isTooltipVisible, tooltipLocation, tooltipContent } =
@@ -12,7 +13,7 @@ const Tooltip = () => {
         (isTooltipVisible ? "visible" : "invisible")
       }
       style={{
-        top: `${tooltipLocation.y - 60}px`,
+        top: `${tooltipLocation.y}px`,
         left: `${tooltipLocation.x}px`,
         zIndex: 1000,
       }}

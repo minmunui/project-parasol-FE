@@ -1,8 +1,9 @@
 import { TooltipContext } from "../../../../App";
 import { useContext, useState } from "react";
-import RecommendDot from "./RecommendDot";
+import A2CRecommendDot from "./A2CRecommendDot";
 import { PriceGraphContext } from "../organisms/PriceGraph";
 import { GRAPH_OPTIONS } from "../organisms/graphScaleConstants";
+import {DQNFlag} from "./DQNFlag";
 
 /**
  *
@@ -28,7 +29,7 @@ const GraphBar = ({
     useContext(TooltipContext);
   const [active, setActive] = useState(false);
 
-  const { graphScale } = useContext(PriceGraphContext);
+  const { graphScale, isDQN, A2CState } = useContext(PriceGraphContext);
 
   return (
     value && (
@@ -51,6 +52,7 @@ const GraphBar = ({
           }
         }}
       >
+        {isDQN && <DQNFlag recommend={recommend.dqn.recommend} />}
         <div
           className={
             "graph-bar flex w-[14px] flex-shrink-0 transform flex-col items-center transition-all " +
@@ -74,8 +76,8 @@ const GraphBar = ({
             </div>
           )}
         </div>
-        {recommend !== -1 && (
-          <RecommendDot active={active} recommend={recommend} />
+        {recommend.a2c.buy !== -1 && (
+          <A2CRecommendDot active={active} recommend={recommend.a2c} state={A2CState} />
         )}
       </div>
     )
