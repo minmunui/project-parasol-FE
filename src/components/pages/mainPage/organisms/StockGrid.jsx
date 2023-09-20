@@ -1,4 +1,4 @@
-import StockCard from "../organisms/StockCard";
+import StockCard from "../molecules/StockCard";
 
 const StockGrid = ({ stocks }) => {
   return (
