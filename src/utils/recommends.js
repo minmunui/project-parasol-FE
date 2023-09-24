@@ -7,6 +7,7 @@ export const getRecommendBgColor = (isRecommend) => {
     return isRecommend? "bg-red-500 text-white": "bg-blue-500 text-white"
 }
 
+
 /**
  * 추천이면 빨간색, 아니면 파란색
  * @param {boolean} isRecommend

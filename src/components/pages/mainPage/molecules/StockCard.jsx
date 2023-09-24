@@ -44,7 +44,7 @@ const StockCard = ({ stock }) => {
           }}
         >
           {comma(value)}
-          <span className={"flex items-end text-sm"}>KRW</span>
+          <span className={"flex items-end text-sm"}>원</span>
           <div
             className={
               "stock-card-change flex items-end text-sm " +

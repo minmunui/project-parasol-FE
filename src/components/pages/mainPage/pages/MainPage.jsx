@@ -1,4 +1,4 @@
-import StockGrid from "../molecules/StockGrid";
+import StockGrid from "../organisms/StockGrid";
 import { getStocks } from "../../../../services/stocks";
 import { useQuery } from "react-query";
 import { Suspense, useEffect, useState } from "react";

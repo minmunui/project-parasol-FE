@@ -14,6 +14,7 @@ const PriceGraph = ({ stockCode }) => {
 
   const [maxValue, setMaxValue] = useState(1);
   const [minValue, setMinValue] = useState(0);
+  const [isDQN, setIsDQN] = useState(false);
 
   const domObserver = useRef(null);
 
@@ -42,12 +43,20 @@ const PriceGraph = ({ stockCode }) => {
     };
   }, [fetchNextPage, hasNextPage, isFetchingNextPage, prices, recommends]);
 
+  const [numGraphScale] = useState(GRAPH_OPTIONS.length - 1);
+
   const [graphScale, setGraphScale, setNextScale, setPrevScale] =
-    useCircularState(0, 2);
+    useCircularState(0, numGraphScale);
 
   return (
     <PriceGraphContext.Provider
-      value={{ graphScale, setGraphScale, setNextScale, setPrevScale }}
+      value={{
+        graphScale,
+        setNextScale,
+        setPrevScale,
+        isDQN,
+        setIsDQN,
+      }}
     >
       <div
         className={
@@ -56,7 +65,7 @@ const PriceGraph = ({ stockCode }) => {
       >
         <div
           className={
-            "graph-contents flex h-[400px] w-full flex-row-reverse items-end overflow-y-visible overflow-x-scroll whitespace-nowrap pb-8 pt-4 pl-4 " +
+            "graph-contents flex h-[400px] w-full flex-row-reverse items-end overflow-y-visible overflow-x-scroll whitespace-nowrap pb-8 pl-4 pt-4 " +
             GRAPH_OPTIONS[graphScale].barGap
           }
         >
@@ -73,6 +82,17 @@ const PriceGraph = ({ stockCode }) => {
             className={"observer h-full w-1 bg-gray-300"}
           ></div>
         </div>
+      </div>
+      <div className={"mt-2"}>
+        <button
+          onClick={() => setIsDQN(!isDQN)}
+          className={
+            "DQNButton border border-gray-300 px-4 py-2 font-semibold hover:bg-gray-100 " +
+            (isDQN ? "bg-green-100 hover:bg-green-200 " : "")
+          }
+        >
+          DQN
+        </button>
       </div>
     </PriceGraphContext.Provider>
   );

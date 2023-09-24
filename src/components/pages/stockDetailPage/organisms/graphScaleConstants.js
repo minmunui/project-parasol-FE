@@ -20,4 +20,11 @@ export const GRAPH_OPTIONS = [
         dotWidth: "w-[5px]",
         dotHeight: "h-[5px]",
     },
+    {
+        label: "smaller",
+        barGap: "gap-0",
+        barWidth: "w-[4px]",
+        dotWidth: "w-[3px]",
+        dotHeight: "h-[3px]",
+    },
 ];

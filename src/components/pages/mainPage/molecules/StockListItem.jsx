@@ -40,14 +40,14 @@ const StockListItem = ({ stock }) => {
             hideTooltip();
           }}
         >
-          {comma(stock.price.value)}₩
+          {comma(stock.price.value)}원
         </div>
         <div
           className={
             "stock-change w-1/2 text-end " + getChangeColor(stock.price.change)
           }
         >
-          {comma(stock.price.change)}₩ {getChangeSymbol(stock.price.change)}
+          {comma(stock.price.change)}원 {getChangeSymbol(stock.price.change)}
         </div>
         <div
           className={

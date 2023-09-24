@@ -10,19 +10,17 @@ const useTooltip = () => {
   const mouseLocation = useMouseLocation();
   const windowWidth = useWindowWidth();
 
-
-
   useEffect(() => {
     if (isTooltipVisible) {
       if (mouseLocation.x > windowWidth / 2) {
         setTooltipLocation({
-          x: mouseLocation.x - 140,
-          y: mouseLocation.y
+          x: mouseLocation.x - 170,
+          y: mouseLocation.y + 10,
         });
       } else {
         setTooltipLocation({
           x: mouseLocation.x,
-          y: mouseLocation.y
+          y: mouseLocation.y + 10,
         });
       }
     }
