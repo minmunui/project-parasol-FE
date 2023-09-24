@@ -11,8 +11,8 @@ const RecommendSummary = ({ recommend }) => {
   return (
     <div className={"flex flex-col items-center"}>
       <span className={"flex flex-col text-2xl font-semibold"}>
-        <span className={"font-bold " + getRecommendTextColor(buy)}>
-          {getRecommendText(buy)}({buy}%)
+        <span className={"font-bold " + getRecommendTextColor(buy>50)}>
+          {getRecommendText(buy>50)}({buy}%)
         </span>
         <span className={"text-sm text-gray-500"}>{date}기준</span>
       </span>
@@ -56,7 +56,7 @@ const StockDetailTemplate = ({ stock }) => {
         각 막대는 해당 날짜의 종가를 의미하며 빨간 점은 해당 날짜의 추천도를
         0%~100%로 나타냅니다.
         <br />
-        일반적으로 50%를 기준으로 50% 이상이면 매수, 50% 이하면 매도를
+        일반적으로 A2C모델의 50%를 기준으로 50% 이상이면 매수, 50% 이하면 매도를
         추천합니다.
       </div>
     </div>
