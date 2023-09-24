@@ -9,6 +9,7 @@ import { SkeletonTheme } from "react-loading-skeleton";
 import Tooltip from "./components/commons/atoms/Tooltip";
 import useTooltip from "./hooks/useTooltip";
 import { HelmetProvider } from "react-helmet-async";
+import InfoPage from "./components/pages/infoPage/pages/InfoPage";
 
 export const TooltipContext = createContext(null);
 const queryClient = new QueryClient();
@@ -44,6 +45,7 @@ function App() {
                   <Route path="/" element={<MainPage />} />
                   <Route path="/stock/:id" element={<StockDetailPage />} />
                 </Route>
+                <Route path="/info" element={<InfoPage />} />
               </Routes>
             </BrowserRouter>
           </QueryClientProvider>

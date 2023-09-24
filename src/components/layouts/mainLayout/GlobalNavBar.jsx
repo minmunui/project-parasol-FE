@@ -1,4 +1,7 @@
 import logo from "./images/logo.png";
+import { Link } from "react-router-dom";
+import { BsQuestionCircle } from "react-icons/bs";
+
 const GlobalNavBar = () => {
   return (
     <>
@@ -15,6 +18,9 @@ const GlobalNavBar = () => {
           />
         </a>
         <div className={"gnb-right flex gap-5 px-4"}>
+          <Link to={"/info"} className={"h-full"}>
+              <BsQuestionCircle size={34} />
+          </Link>
         </div>
       </nav>
     </>

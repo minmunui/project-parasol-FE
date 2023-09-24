@@ -45,7 +45,7 @@ const PriceGraph = ({ stockCode }) => {
 
   const [numGraphScale] = useState(GRAPH_OPTIONS.length - 1);
 
-  const [graphScale, setGraphScale, setNextScale, setPrevScale] =
+  const [graphScale, , setNextScale, setPrevScale] =
     useCircularState(0, numGraphScale);
 
   return (
