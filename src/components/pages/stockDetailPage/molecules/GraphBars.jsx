@@ -4,9 +4,30 @@ import { getFirstDaysOfMonth } from "../../../../utils/calculate";
 import { comma } from "../../../../utils/convert";
 import { PriceGraphContext } from "../organisms/PriceGraph";
 
+const tooltipText = (value, date, isDQN) => {
+  const datePrice = `${date} : ${comma(value.value)}원`;
+  let dqnText = "";
+  if (isDQN) {
+    dqnText =
+      value.dqn.recommend === "null"
+        ? "\nDQN 데이터 없음"
+        : `\nDQN 추천도 : ${value.dqn.recommend}`;
+  }
+  let a2cText = "";
+  if (value.a2c.buy === -1) {
+    a2cText = "\nA2C 데이터 없음";
+  } else {
+    a2cText = "\nA2C 추천도";
+    a2cText += `\nBUY:${value.a2c.buy}%`;
+    a2cText += `\nHOLD:${value.a2c.hold}%`;
+    a2cText += `\nSELL:${100 - value.a2c.buy - value.a2c.hold}%`;
+  }
+  return datePrice + dqnText + a2cText;
+};
+
 const GraphBars = ({ prices, recommends, maxValue, minValue }) => {
   const [firstDays, setFirstDays] = useState([]);
-  const { A2CState, isDQN } = useContext(PriceGraphContext);
+  const { isDQN } = useContext(PriceGraphContext);
 
   useEffect(() => {
     setFirstDays(getFirstDaysOfMonth(prices));
@@ -22,29 +43,7 @@ const GraphBars = ({ prices, recommends, maxValue, minValue }) => {
           maxValue={maxValue}
           minValue={minValue}
           tooltip={
-            `${value.date} : ${comma(value.value)}원 ` +
-            (isDQN
-              ? `\n${
-                  value.dqn.recommend === "null"
-                    ? "DQN 데이터 없음"
-                    : `DQN 추천도 : ${value.dqn.recommend}`
-                }`
-              : "") +
-            (A2CState > 0
-              ? `\n${
-                  value.a2c.buy === -1
-                    ? "A2C 데이터 없음"
-                    : `A2C 추천도${
-                        A2CState === 2 || A2CState === 3
-                          ? `\nBUY:${value.a2c.buy}%`
-                          : ""
-                      }${
-                        A2CState === 1 || A2CState === 3
-                          ? `\nSELL:${100 - value.a2c.buy - value.a2c.hold}%`
-                          : ""
-                      }`
-                }`
-              : "")
+            tooltipText(value, value.date, isDQN)
           }
           isFirstDay={firstDays.includes(index)}
         ></GraphBar>

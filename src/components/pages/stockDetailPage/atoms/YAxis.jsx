@@ -13,21 +13,29 @@ const YAxis = ({ maxValue, minValue }) => {
     <>
       <div
         className={
-          "graph-y-axis absolute top-0 z-50 flex h-full flex-col content-between justify-between gap-4 border-l-2 border-l-gray-300 bg-white px-1.5 pb-[58px] pt-2 text-xs text-gray-500"
+          "graph-y-axis absolute top-0 z-50 flex h-full flex-col content-between justify-between border-l-2 border-l-gray-300 bg-white px-1.5 pt-2 text-xs text-gray-500"
         }
         ref={yAxis}
       >
-        <div className={"y-axis-item"}>{comma(sliceDigits(maxValue, -1))}₩</div>
-        <div className={"y-axis-item"}>
-          {comma(sliceDigits(((maxValue - minValue) * 2) / 3 + minValue, -1))}₩
+        <div className={"price-axis-indicator h-[85%] pb-8 flex flex-col justify-between"}>
+          <div className={"y-axis-item"}>
+            {comma(sliceDigits(maxValue, -1))}₩
+          </div>
+          <div className={"y-axis-item"}>
+            {comma(sliceDigits(((maxValue - minValue) * 2) / 3 + minValue, -1))}
+            ₩
+          </div>
+          <div className={"y-axis-item"}>
+            {comma(sliceDigits((maxValue - minValue) / 3 + minValue, -1))}₩
+          </div>
+          <div className={"y-axis-item"}>
+            {comma(sliceDigits(minValue, -1))}₩
+          </div>
         </div>
-        <div className={"y-axis-item"}>
-          {comma(sliceDigits((maxValue - minValue) / 3 + minValue, -1))}₩
-        </div>
-        <div className={"y-axis-item"}>{comma(sliceDigits(minValue, -1))}₩</div>
+        <div className={"h-[15%]"}></div>
         <div
           className={
-            "scaling-buttons absolute bottom-0 left-0 z-[1000] flex w-full justify-between px-1 pb-4 "
+            "scaling-buttons z-[1000] flex h-8 w-full justify-between px-1 py-1"
           }
         >
           <button

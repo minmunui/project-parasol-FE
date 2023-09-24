@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import useComponentSize from "../../../hooks/useComponentSize";
-
+const footerPadding = 32;
 const Footer = () => {
   const footer = useRef();
   const footerHeight = useComponentSize(footer).height;
@@ -8,7 +8,7 @@ const Footer = () => {
     <footer className={"footer"}>
       <div
         className={"footer-dummy"}
-        style={{ height: `${footerHeight + 20}px` }}
+        style={{ height: `${footerHeight + 20 + footerPadding}px` }}
       ></div>
       <div
         className={

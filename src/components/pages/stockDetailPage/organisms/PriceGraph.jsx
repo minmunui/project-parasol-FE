@@ -14,7 +14,6 @@ const PriceGraph = ({ stockCode }) => {
 
   const [maxValue, setMaxValue] = useState(1);
   const [minValue, setMinValue] = useState(0);
-  const [A2CState, setA2CState, setNextA2C, setPrevA2C] = useCircularState(0, 3)
   const [isDQN, setIsDQN] = useState(false);
 
   const domObserver = useRef(null);
@@ -55,8 +54,6 @@ const PriceGraph = ({ stockCode }) => {
         graphScale,
         setNextScale,
         setPrevScale,
-        A2CState,
-        setA2CState,
         isDQN,
         setIsDQN,
       }}
@@ -90,20 +87,11 @@ const PriceGraph = ({ stockCode }) => {
         <button
           onClick={() => setIsDQN(!isDQN)}
           className={
-            "border border-r-0 border-gray-300 px-4 py-2 font-semibold hover:bg-gray-100 " +
+            "DQNButton border border-gray-300 px-4 py-2 font-semibold hover:bg-gray-100 " +
             (isDQN ? "bg-green-100 hover:bg-green-200 " : "")
           }
         >
           DQN
-        </button>
-        <button
-          onClick={() => setNextA2C()}
-          className={
-            "border border-gray-300 px-4 py-2 font-semibold hover:bg-gray-100 " +
-            (A2CState>0 ? "bg-green-100 hover:bg-green-200 " : "")
-          }
-        >
-          A2C
         </button>
       </div>
     </PriceGraphContext.Provider>

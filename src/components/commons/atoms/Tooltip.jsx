@@ -1,7 +1,6 @@
-import { useContext, useRef } from "react";
+import { useContext } from "react";
 import { TooltipContext } from "../../../App";
 import { newLineToBr } from "../../../utils/convert";
-import useComponentSize from "../../../hooks/useComponentSize";
 
 const Tooltip = () => {
   const { isTooltipVisible, tooltipLocation, tooltipContent } =

@@ -1,9 +1,9 @@
 import { TooltipContext } from "../../../../App";
 import { useContext, useState } from "react";
-import A2CRecommendDot from "./A2CRecommendDot";
 import { PriceGraphContext } from "../organisms/PriceGraph";
 import { GRAPH_OPTIONS } from "../organisms/graphScaleConstants";
-import {DQNFlag} from "./DQNFlag";
+import { DQNFlag } from "./DQNFlag";
+import RecommendGraphBar from "./RecommendGraphBar";
 
 /**
  *
@@ -29,13 +29,12 @@ const GraphBar = ({
     useContext(TooltipContext);
   const [active, setActive] = useState(false);
 
-  const { graphScale, isDQN, A2CState } = useContext(PriceGraphContext);
-
+  const { graphScale, isDQN } = useContext(PriceGraphContext);
   return (
     value && (
       <div
         className={
-          "bar-wrapper relative flex h-full flex-col items-center justify-end transition-all " +
+          "bar-wrapper relative flex h-full flex-col items-center justify-end gap-3 transition-all " +
           (active ? "bg-gray-100" : "")
         }
         onMouseEnter={() => {
@@ -53,31 +52,35 @@ const GraphBar = ({
         }}
       >
         {isDQN && <DQNFlag recommend={recommend.dqn.recommend} />}
-        <div
-          className={
-            "graph-bar flex w-[14px] flex-shrink-0 transform flex-col items-center transition-all " +
-            (isFirstDay ? "z-10 " : "") +
-            (active ? "bg-blue-300 " : "bg-green-300 ") +
-            GRAPH_OPTIONS[graphScale].barWidth
-          }
-          style={{
-            height: `${
-              ((value - minValue) / (maxValue - minValue)) * 90 + 10
-            }%`,
-          }}
-        >
-          {isFirstDay && (
-            <div
-              className={
-                "date-axis absolute -bottom-5 z-10 text-xs text-gray-500"
-              }
-            >
-              {date}
-            </div>
-          )}
+        <div className={"price-graph-bar-wrapper h-[85%] flex flex-col justify-end"}>
+          <div
+            className={
+              "price-graph-bar w-[14px] flex-shrink-0 transform flex-col items-center transition-all " +
+              (isFirstDay ? "z-10 " : "") +
+              (active ? "bg-blue-300 " : "bg-green-300 ") +
+              GRAPH_OPTIONS[graphScale].barWidth
+            }
+            style={{
+              height: `${
+                ((value - minValue) / (maxValue - minValue)) * 90 + 10
+              }%`,
+            }}
+          ></div>
         </div>
-        {recommend.a2c.buy !== -1 && (
-          <A2CRecommendDot active={active} recommend={recommend.a2c} state={A2CState} />
+        <div className={"a2c-graph-bar-wrapper h-[15%]"}>
+          {
+            recommend.a2c.buy !== -1 &&
+            <RecommendGraphBar
+              buy={recommend.a2c.buy}
+              hold={recommend.a2c.hold}
+              sell={100.0 - recommend.a2c.buy - recommend.a2c.hold}
+            />
+          }
+        </div>
+        {isFirstDay && (
+          <div className={"date-axis absolute -bottom-5 z-10 text-xs text-gray-500"}>
+            {date}
+          </div>
         )}
       </div>
     )
