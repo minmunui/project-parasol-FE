@@ -26,6 +26,9 @@ npm install
 ```bash
 npm run start
 ```
+### 4. 사용 라이브러리
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black"> <img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=black">
+<img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=black">
 
 ## 프로젝트 구조
 ```
