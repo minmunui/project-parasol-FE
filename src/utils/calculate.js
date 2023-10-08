@@ -35,6 +35,16 @@ export const filterStocks = (stocks, filter) => {
   });
 };
 
-export const sortStocks = (stocks, sort) => {
-  return stocks.toSorted(sort.compare);
+export const sortStocks = (stocks, sortOption) => {
+  // console.log("sortStocks", stocks, sortOption)
+  if (sortOption === undefined || sortOption === null) {
+    return stocks;
+  }
+  if (stocks === undefined || stocks === null) {
+    return [];
+  }
+  if (stocks.length === 0) {
+    return [];
+  }
+  return stocks.sort(sortOption.compare);
 };

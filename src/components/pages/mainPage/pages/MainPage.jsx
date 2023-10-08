@@ -17,7 +17,7 @@ const MainPage = () => {
   const [isTable, setIsTable] = useState(true);
   const [filteredStocks, setFilteredStocks] = useState([]);
   const onSearch = () => {
-    if (value) {
+    if (value && isSuccess) {
       const filtered = filterStocks(data, value);
       setFilteredStocks(filtered);
     } else {

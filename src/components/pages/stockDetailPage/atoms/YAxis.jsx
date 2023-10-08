@@ -19,17 +19,17 @@ const YAxis = ({ maxValue, minValue }) => {
       >
         <div className={"price-axis-indicator h-[85%] pb-8 flex flex-col justify-between"}>
           <div className={"y-axis-item"}>
-            {comma(sliceDigits(maxValue, -1))}₩
+            {comma(sliceDigits(maxValue, -1))}원
           </div>
           <div className={"y-axis-item"}>
             {comma(sliceDigits(((maxValue - minValue) * 2) / 3 + minValue, -1))}
             ₩
           </div>
           <div className={"y-axis-item"}>
-            {comma(sliceDigits((maxValue - minValue) / 3 + minValue, -1))}₩
+            {comma(sliceDigits((maxValue - minValue) / 3 + minValue, -1))}원
           </div>
           <div className={"y-axis-item"}>
-            {comma(sliceDigits(minValue, -1))}₩
+            {comma(sliceDigits(minValue, -1))}원
           </div>
         </div>
         <div className={"h-[15%]"}></div>

@@ -14,7 +14,7 @@ const toggleOrdering = (current, ordering) => {
  * @param {{compare: function(*, *): number}} current
  * @param {{compare: function(*, *): *}} ascend
  * @param {{compare: function(*, *): *}} descent
- * @returns {element}
+ * @returns {string}
  */
 const getArrow = (current, ascend, descent) => {
   if (current === ascend) return "↑";
