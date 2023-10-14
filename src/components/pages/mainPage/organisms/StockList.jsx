@@ -76,12 +76,20 @@ const StockList = ({ stocks }) => {
             )}
           </div>
           <div
+              className={"w-1/2 text-center text-sm text-gray-500 cursor-pointer"}
+              onClick={() => {
+                setOrdering(toggleOrdering(ordering, STOCK_ORDERING.CHANGE));
+              }}
+          >
+            DQN추천도{" "}
+          </div>
+          <div
             className={"w-1/2 text-center text-sm text-gray-500 cursor-pointer"}
             onClick={() => {
               setOrdering(toggleOrdering(ordering, STOCK_ORDERING.RECOMMEND));
             }}
           >
-            추천{" "}
+            A2C추천도{" "}
             {getArrow(
               ordering,
               STOCK_ORDERING.RECOMMEND.ASC,

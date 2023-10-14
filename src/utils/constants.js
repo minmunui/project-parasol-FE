@@ -25,11 +25,23 @@ export const STOCK_ORDERING = {
     DESC: { compare: (a, b) => b.name.localeCompare(a.name) },
   },
   RECOMMEND: {
-    ASC: { compare: (a, b) => a.recentRecommend.buy - b.recentRecommend.buy },
-    DESC: { compare: (a, b) => b.recentRecommend.buy - a.recentRecommend.buy },
+    ASC: {
+      compare: (a, b) => a.recentRecommend.a2c.buy - b.recentRecommend.a2c.buy,
+    },
+    DESC: {
+      compare: (a, b) => b.recentRecommend.a2c.buy - a.recentRecommend.a2c.buy,
+    },
   },
 };
 
-export const DEFAULT_APP_TITLE = "파라솔 - 심층 강화학습을 이용한 주식 추천 시스템";
+export const DEFAULT_APP_TITLE =
+  "파라솔 - 심층 강화학습을 이용한 주식 추천 시스템";
 
-export const DEFAULT_APP_DESCRIPTION = "강화학습 모델의 주식투자 학습 결과를 확인하세요"
+export const DEFAULT_APP_DESCRIPTION =
+  "강화학습 모델의 주식투자 학습 결과를 확인하세요";
+
+export const RECOMMEND = {
+  buy: "buy",
+  hold: "hold",
+  sell: "sell",
+};
