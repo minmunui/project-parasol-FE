@@ -9,10 +9,11 @@ import {Head} from "../../../commons/atoms/Head";
 const RecommendSummary = ({ recommend }) => {
   const { buy, date } = recommend;
   return (
-    <div className={"flex flex-col items-center"}>
+    <div className={"recommend-summary flex flex-col items-center"}>
       <span className={"flex flex-col text-2xl font-semibold"}>
         <span className={"font-bold " + getRecommendTextColor(buy>50)}>
           {getRecommendText(buy>50)}({buy}%)
+        {/*    TODO: 추천도를 반영*/}
         </span>
         <span className={"text-sm text-gray-500"}>{date}기준</span>
       </span>
@@ -53,11 +54,9 @@ const StockDetailTemplate = ({ stock }) => {
           "graph-info mt-4 w-full rounded-2xl bg-green-100 p-2 text-sm text-gray-500"
         }
       >
-        각 막대는 해당 날짜의 종가를 의미하며 빨간 점은 해당 날짜의 추천도를
-        0%~100%로 나타냅니다.
+        녹색 막대는 해당 날짜의 종가를 의미하며, 아래의 빨간 바는 해당 날짜의 추천도를 나타냅니다.
         <br />
-        일반적으로 A2C모델의 50%를 기준으로 50% 이상이면 매수, 50% 이하면 매도를
-        추천합니다.
+        추천도가 가장 높은 행동이 모델이 예측하여 추천하는 행동입니다.
       </div>
     </div>
   );
