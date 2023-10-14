@@ -4,8 +4,9 @@ export const getStocks = async () => {
   return await instance
     .get("/stocks")
     .then((response) => {
-      if (Array.isArray(response)) return response;
-      else throw new Error("서버로부터 받은 데이터가 올바르지 않습니다.");
+      if (Array.isArray(response)) {
+        return response;
+      } else throw new Error("서버로부터 받은 데이터가 올바르지 않습니다.");
     })
     .catch((error) => {
       console.log(error);

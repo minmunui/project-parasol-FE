@@ -1,5 +1,4 @@
 import RecommendBadge from "../../../commons/atoms/RecommendBadge";
-import { getRecommend } from "../../../../utils/recommends";
 import {
   comma,
   getChangeColor,
@@ -55,7 +54,7 @@ const StockCard = ({ stock }) => {
             {comma(change)}({getChangePercentage(value, change)}%)
           </div>
         </div>
-        <RecommendBadge recommend={getRecommend(recentRecommend.buy)} />
+        <RecommendBadge recommend={recentRecommend.dqn.recommend} />
       </div>
       <div
         className={"recommend-bar-wrapper"}
@@ -66,7 +65,7 @@ const StockCard = ({ stock }) => {
           hideTooltip();
         }}
       >
-        <RecommendBar recommend={recentRecommend.buy} />
+        <RecommendBar recommend={recentRecommend.a2c} />
       </div>
     </div>
   );

@@ -45,6 +45,7 @@ const PriceGraph = ({ stockCode }) => {
 
   const [numGraphScale] = useState(GRAPH_OPTIONS.length - 1);
 
+  // eslint-disable-next-line no-unused-vars
   const [graphScale, setGraphScale, setNextScale, setPrevScale] =
     useCircularState(0, numGraphScale);
 

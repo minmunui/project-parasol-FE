@@ -28,7 +28,7 @@ export const getFirstDaysOfMonth = (dates) => {
 };
 
 export const filterStocks = (stocks, filter) => {
-  return stocks.filter((stock) => {
+  return stocks?.filter((stock) => {
     return (
       stock.name.includes(filter) || intToCode(stock.stockCode).includes(filter)
     );
