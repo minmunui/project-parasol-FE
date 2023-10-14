@@ -8,14 +8,16 @@ export const STOCK_ORDERING = {
     ASC: {
       compare: (a, b) =>
         getChangePercentage(a.price.value, a.price.change) -
-        getChangePercentage(b.price.value, b.price.change)
+          getChangePercentage(b.price.value, b.price.change) >
+        0
           ? 1
           : -1,
     },
     DESC: {
       compare: (a, b) =>
         getChangePercentage(b.price.value, b.price.change) -
-        getChangePercentage(a.price.value, b.price.change)
+          getChangePercentage(a.price.value, a.price.change) >
+        0
           ? 1
           : -1,
     },
