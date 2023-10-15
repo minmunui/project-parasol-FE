@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { TooltipContext } from "../../../../App";
 import { useContext } from "react";
 import RecommendBadge from "../../../commons/atoms/RecommendBadge";
+import {getStockName} from "../../../../utils/stocks";
 
 const StockListItem = ({ stock }) => {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ const StockListItem = ({ stock }) => {
       >
         <div className={"stock-title flex w-1/2 justify-between"}>
           <span className={"stock-name line-clamp-1 text-left"}>
-            {stock.name}
+            {getStockName(stock.stockCode)}
           </span>
           <span className={"stock-code text-sm text-gray-500"}>
             {intToCode(stock.stockCode)}

@@ -6,6 +6,7 @@ import {
     getRecommendTextColor,
 } from "../../../../utils/recommends";
 import { Head } from "../../../commons/atoms/Head";
+import {getStockName} from "../../../../utils/stocks";
 
 const RecommendSummary = ({ recommend }) => {
   const a2cRecommend = a2cToText(recommend.a2c);
@@ -36,8 +37,8 @@ const StockTitle = ({ stockName, stockCode }) => {
 };
 
 const StockDetailTemplate = ({ stock }) => {
-  const { stockCode, name, recentRecommend } = stock;
-
+  const { stockCode, recentRecommend } = stock;
+  const name = getStockName(stockCode);
   return (
     <div className={"stock-detail-template flex w-full flex-col items-center"}>
       <Head

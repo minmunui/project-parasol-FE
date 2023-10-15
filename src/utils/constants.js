@@ -47,3 +47,4 @@ export const RECOMMEND = {
   hold: "hold",
   sell: "sell",
 };
+

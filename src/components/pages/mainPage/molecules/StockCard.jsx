@@ -10,9 +10,11 @@ import { TooltipContext } from "../../../../App";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import RecommendBar from "../../../commons/atoms/RecommendBar";
+import {getStockName} from "../../../../utils/stocks";
 
 const StockCard = ({ stock }) => {
-  const { name, stockCode, price, recentRecommend } = stock;
+  const { stockCode, price, recentRecommend } = stock;
+  const name = getStockName(stockCode)
   const { value, change } = price;
   const { hideTooltip, showTooltip } = useContext(TooltipContext);
 

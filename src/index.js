@@ -6,9 +6,11 @@ import reportWebVitals from "./reportWebVitals";
 
 import { worker } from "./mocks/worker";
 
-if (process.env.NODE_ENV === "development") {
-  worker.start();
-}
+// if (process.env.NODE_ENV === "development") {
+//   worker.start();
+// }
+
+console.log("process.env.REACT_APP_API_URL", process.env.REACT_APP_API_URL);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
