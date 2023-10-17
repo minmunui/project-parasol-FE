@@ -1,7 +1,7 @@
 import { PRICE_DATAS } from "./datas/priceDatas";
 import { MAX_PAGE_SIZE } from "../utils/constants";
 import { STOCK_DATAS } from "./datas/stockDatas";
-import {RECOMMEND_DATA} from "./datas/recommendDatas";
+import {SINGLE_RECOMMEND_DATA} from "./datas/recommendDatas";
 
 const isExceedPage = (page, dataLength) => {
   page = parseInt(page)
@@ -24,8 +24,8 @@ export const getPriceData = (stockCode, page) => {
 
 export const getRecommendData = (stockCode, page) => {
   page = parseInt(page)
-  if (isExceedPage(page, RECOMMEND_DATA.length)) {
-    return RECOMMEND_DATA.slice(page * MAX_PAGE_SIZE, (page + 1) * MAX_PAGE_SIZE);
+  if (isExceedPage(page, SINGLE_RECOMMEND_DATA.length)) {
+    return SINGLE_RECOMMEND_DATA.slice(page * MAX_PAGE_SIZE, (page + 1) * MAX_PAGE_SIZE);
   }
   else {
     return []
@@ -42,5 +42,3 @@ export const getStockData = (stockCode) => {
   }
   return STOCK_DATAS[stockCode];
 };
-
-//TODO : 페이지네이션은 0부터 시작하게끔 수정, 페이지네이션 mocking 제작

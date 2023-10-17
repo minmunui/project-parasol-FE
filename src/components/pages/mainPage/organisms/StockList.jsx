@@ -78,20 +78,7 @@ const StockList = ({ stocks }) => {
           <div
               className={"w-1/2 text-center text-sm text-gray-500"}
           >
-            DQN추천도{" "}
-          </div>
-          <div
-            className={"w-1/2 text-center text-sm text-gray-500 cursor-pointer"}
-            onClick={() => {
-              setOrdering(toggleOrdering(ordering, STOCK_ORDERING.RECOMMEND));
-            }}
-          >
-            A2C추천도{" "}
-            {getArrow(
-              ordering,
-              STOCK_ORDERING.RECOMMEND.ASC,
-              STOCK_ORDERING.RECOMMEND.DESC,
-            )}
+            AI추천{" "}
           </div>
         </div>
         <div className={"h-[1px] w-full bg-gray-300"}></div>

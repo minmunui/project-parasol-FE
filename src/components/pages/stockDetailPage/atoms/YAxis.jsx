@@ -17,7 +17,7 @@ const YAxis = ({ maxValue, minValue }) => {
         }
         ref={yAxis}
       >
-        <div className={"price-axis-indicator h-[85%] pb-8 flex flex-col justify-between"}>
+        <div className={"price-axis-indicator h-[85%] flex flex-col justify-between"}>
           <div className={"y-axis-item"}>
             {comma(sliceDigits(maxValue, -1))}원
           </div>
@@ -32,7 +32,6 @@ const YAxis = ({ maxValue, minValue }) => {
             {comma(sliceDigits(minValue, -1))}원
           </div>
         </div>
-        <div className={"h-[15%]"}></div>
         <div
           className={
             "scaling-buttons z-[1000] flex h-8 w-full justify-between px-1 py-1"

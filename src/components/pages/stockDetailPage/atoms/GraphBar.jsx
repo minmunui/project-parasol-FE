@@ -3,13 +3,12 @@ import { useContext, useState } from "react";
 import { PriceGraphContext } from "../organisms/PriceGraph";
 import { GRAPH_OPTIONS } from "../organisms/graphScaleConstants";
 import { DQNFlag } from "./DQNFlag";
-import RecommendGraphBar from "./RecommendGraphBar";
 
 /**
  *
  * @param {number} value - 해당 bar가 표시할 value를 나타냅니다.
  * @param {number} recommend - 해당 bar가 표시할 추천도를 나타냅니다. -1이면 추천도 데이터가 없는 것을 의미합니다.
- * @param {number} maxValue - 해당 bar가 표시할 수 있는 가장 큰 수치를 나타냅니다. bar의 길이는 value / maximumValue로 결정됩니다.
+ * @param {number} maxValue - 해당 bar가 표시할 수 있는 가장 큰 수치를 나타냅니다. bar의 길이는 price / maximumValue로 결정됩니다.
  * @param {number} minValue
  * @param {string} tooltip - 해당 bar에 마우스를 올렸을 때 나타날 tooltip을 나타냅니다.
  * @param {boolean} isFirstDay
@@ -17,7 +16,7 @@ import RecommendGraphBar from "./RecommendGraphBar";
  * @constructor
  */
 const GraphBar = ({
-  value,
+  price,
   recommend,
   maxValue,
   minValue,
@@ -28,10 +27,11 @@ const GraphBar = ({
   const { showTooltip, hideTooltip, isTooltipVisible } =
     useContext(TooltipContext);
   const [active, setActive] = useState(false);
+  console.log("minValue", minValue, "maxValue", maxValue);
 
-  const { graphScale, isDQN } = useContext(PriceGraphContext);
+  const { graphScale } = useContext(PriceGraphContext);
   return (
-    value && (
+    price && (
       <div
         className={
           "bar-wrapper relative flex h-full flex-col items-center justify-end gap-3 transition-all " +
@@ -51,8 +51,8 @@ const GraphBar = ({
           }
         }}
       >
-        {isDQN && <DQNFlag recommend={recommend.dqn.recommend} />}
-        <div className={"price-graph-bar-wrapper h-[85%] flex flex-col justify-end"}>
+        <DQNFlag recommend={recommend.recommend} />
+        <div className={"price-graph-bar-wrapper h-[100%] flex flex-col justify-end"}>
           <div
             className={
               "price-graph-bar w-[14px] flex-shrink-0 transform flex-col items-center transition-all " +
@@ -62,20 +62,10 @@ const GraphBar = ({
             }
             style={{
               height: `${
-                ((value - minValue) / (maxValue - minValue)) * 90 + 10
+                ((price - minValue) / (maxValue - minValue)) * 90 + 10
               }%`,
             }}
           ></div>
-        </div>
-        <div className={"a2c-graph-bar-wrapper h-[15%]"}>
-          {
-            recommend.a2c.buy !== -1 &&
-            <RecommendGraphBar
-              buy={recommend.a2c.buy}
-              hold={recommend.a2c.hold}
-              sell={100.0 - recommend.a2c.buy - recommend.a2c.hold}
-            />
-          }
         </div>
         {isFirstDay && (
           <div className={"date-axis absolute -bottom-5 z-10 text-xs text-gray-500"}>

@@ -10,7 +10,8 @@ export const getStockName = (value) => {
 
 
 export const STOCKS = {
-  삼성전자 : "005930",
-  sk하이닉스 : "000660",
-  posco홀딩스 : "005490"
+  삼성전자 : 5930,
+  sk하이닉스 : 660,
+  posco홀딩스 : 5490,
+  현대자동차 : 5380
 }

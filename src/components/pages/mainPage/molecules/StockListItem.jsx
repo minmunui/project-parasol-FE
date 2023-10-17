@@ -5,7 +5,6 @@ import {
   getChangeSymbol,
   intToCode,
 } from "../../../../utils/convert";
-import RecommendBar from "../../../commons/atoms/RecommendBar";
 import { useNavigate } from "react-router-dom";
 import { TooltipContext } from "../../../../App";
 import { useContext } from "react";
@@ -61,7 +60,7 @@ const StockListItem = ({ stock }) => {
           {getChangeSymbol(stock.price.change)}
         </div>
         <div
-          className={"stock-recommend-a2c flex w-1/2 justify-center"}
+          className={"stock-recommend flex w-1/2 justify-center"}
           onMouseEnter={() => {
             showTooltip(`${stock.recentRecommend.date} 기준`);
           }}
@@ -69,20 +68,7 @@ const StockListItem = ({ stock }) => {
             hideTooltip();
           }}
         >
-          <RecommendBadge recommend={stock.recentRecommend.dqn.recommend} />
-        </div>
-        <div
-          className={
-            "stock-recommend-dqn flex w-1/2 items-center justify-center"
-          }
-          onMouseEnter={() => {
-            showTooltip(`${stock.recentRecommend.date} 기준`);
-          }}
-          onMouseLeave={() => {
-            hideTooltip();
-          }}
-        >
-          <RecommendBar recommend={stock.recentRecommend.a2c} />
+          <RecommendBadge recommend={stock.recentRecommend.recommend} />
         </div>
       </div>
       <hr />

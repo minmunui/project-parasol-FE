@@ -48,3 +48,7 @@ export const RECOMMEND = {
   sell: "sell",
 };
 
+export const STOCK_NAME = {
+5930: "삼성전자",
+5380: "현대자동차",
+};

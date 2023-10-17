@@ -10,28 +10,21 @@ const mergeArrays = (arr1, arr2) => {
       date: item.date,
       value: item.value,
       change: item.change,
-      dqn: {
-        recommend: "null",
+      recommend: null,
       },
-      a2c: {
-        buy: -1,
-        hold: -1,
-      },
-    });
+    );
   });
 
   arr2.forEach((item) => {
     if (map.has(item.date)) {
       const existingItem = map.get(item.date);
-      existingItem.dqn = item.dqn;
-      existingItem.a2c = item.a2c;
+      existingItem.recommend = item.recommend;
     } else {
       map.set(item.date, {
         date: item.date,
         value: -1,
         change: -1,
-        dqn: item.dqn,
-        a2c: item.a2c,
+        recommend: item.recommend,
       });
     }
   });

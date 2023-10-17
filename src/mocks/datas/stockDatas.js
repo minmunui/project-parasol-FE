@@ -9,8 +9,7 @@ export const STOCK_DATAS = {
     },
     recentRecommend:   {
       date: "2023-08-10",
-      dqn: { recommend: "buy" },
-      a2c: { buy: 40, hold: 30 },
+      recommend: "buy"
     },
   },
   5380: {
@@ -23,8 +22,7 @@ export const STOCK_DATAS = {
     },
     recentRecommend:   {
       date: "2023-08-10",
-      dqn: { recommend: "sell" },
-      a2c: { buy: 38, hold: 20 },
+      recommend: "sell"
     },
   },
 };

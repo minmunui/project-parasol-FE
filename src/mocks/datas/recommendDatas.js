@@ -200,3 +200,10 @@ export const RECOMMEND_DATA = [
     a2c: { buy: 33, hold: 64 },
   },
 ];
+
+export const SINGLE_RECOMMEND_DATA = RECOMMEND_DATA.map((data) => {
+  return {
+    date: data.date,
+    recommend: data.dqn.recommend,
+  };
+});

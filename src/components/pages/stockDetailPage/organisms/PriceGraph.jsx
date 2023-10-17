@@ -84,17 +84,6 @@ const PriceGraph = ({ stockCode }) => {
           ></div>
         </div>
       </div>
-      <div className={"mt-2"}>
-        <button
-          onClick={() => setIsDQN(!isDQN)}
-          className={
-            "DQNButton border border-gray-300 px-4 py-2 font-semibold hover:bg-gray-100 " +
-            (isDQN ? "bg-green-100 hover:bg-green-200 " : "")
-          }
-        >
-          DQN
-        </button>
-      </div>
     </PriceGraphContext.Provider>
   );
 };

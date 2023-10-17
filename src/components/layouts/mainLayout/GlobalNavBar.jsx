@@ -12,7 +12,7 @@ const GlobalNavBar = () => {
             src={logo}
             alt={"logo"}
             className={"logo h-full object-contain"}
-          /> 10/16
+          /> 10/17
         </a>
         <div className={"gnb-right flex gap-5 px-4"}>
         </div>

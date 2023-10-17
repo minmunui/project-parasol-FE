@@ -16,7 +16,7 @@ export const handlers = [
       }),
     );
   }),
-  rest.get("/price/:stockCode/:page", (req, res, ctx) => {
+  rest.get("/prices/:stockCode/:page", (req, res, ctx) => {
     const { stockCode, page } = req.params;
     return res(ctx.status(200), ctx.json(getPriceData(stockCode, page)));
   }),
