@@ -9,7 +9,6 @@ import { getChangePercentage } from "../../../../utils/calculate";
 import { TooltipContext } from "../../../../App";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import RecommendBar from "../../../commons/atoms/RecommendBar";
 import {getStockName} from "../../../../utils/stocks";
 
 const StockCard = ({ stock }) => {
@@ -56,18 +55,7 @@ const StockCard = ({ stock }) => {
             {comma(change)}({getChangePercentage(value, change)}%)
           </div>
         </div>
-        <RecommendBadge recommend={recentRecommend.dqn.recommend} />
-      </div>
-      <div
-        className={"recommend-bar-wrapper"}
-        onMouseEnter={() => {
-          showTooltip(`${stock.price.date} 기준`);
-        }}
-        onMouseLeave={() => {
-          hideTooltip();
-        }}
-      >
-        <RecommendBar recommend={recentRecommend.a2c} />
+        <RecommendBadge recommend={recentRecommend.recommend} />
       </div>
     </div>
   );
