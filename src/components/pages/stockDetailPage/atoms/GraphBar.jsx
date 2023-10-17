@@ -27,8 +27,6 @@ const GraphBar = ({
   const { showTooltip, hideTooltip, isTooltipVisible } =
     useContext(TooltipContext);
   const [active, setActive] = useState(false);
-  console.log("minValue", minValue, "maxValue", maxValue);
-
   const { graphScale } = useContext(PriceGraphContext);
   return (
     price && (
